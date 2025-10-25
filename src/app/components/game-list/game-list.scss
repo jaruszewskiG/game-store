@@ -1,0 +1,15 @@
+.game-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  & > * {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 196px;
+    box-sizing: border-box;
+  }
+}

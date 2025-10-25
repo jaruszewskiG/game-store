@@ -1,0 +1,20 @@
+<div class="game-list-item">
+  <div class="image">
+    <img
+      [src]="game.imageUrl"
+      [alt]="game.title"
+    />
+  </div>
+
+  <div class="details">
+    <h3 class="details__title">{{ game.title }}</h3>
+
+    <div class="details__footer">
+      @if (game.discountPercent) {
+      <app-discount-tag [discountPercent]="game.discountPercent"></app-discount-tag>
+      }
+
+      <app-cart-button [price]="game.price"></app-cart-button>
+    </div>
+  </div>
+</div>
