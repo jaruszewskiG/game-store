@@ -4,4 +4,5 @@ export interface Game {
   price: number;
   imageUrl: string;
   discountPercent?: number;
+  isOwned?: boolean;
 }

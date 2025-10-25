@@ -1,5 +1,5 @@
 {
-  "printWidth": 80,
+  "printWidth": 160,
   "singleQuote": true,
   "tabWidth": 2,
   "useTabs": false,
@@ -11,16 +11,16 @@
       "files": "*.html",
       "options": {
         "parser": "angular",
-        "printWidth": 120,
-        "htmlWhitespaceSensitivity": "ignore",
-        "indentInnerHtml": true,
-        "bracketSameLine": false
+        "printWidth": 160,
+        "htmlWhitespaceSensitivity": "css",
+        "bracketSameLine": false,
+        "singleAttributePerLine": true
       }
     },
     {
       "files": "*.ts",
       "options": {
-        "printWidth": 120,
+        "printWidth": 160,
         "singleQuote": true
       }
     }

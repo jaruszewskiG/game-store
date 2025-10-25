@@ -25,4 +25,17 @@
     background-color: rgba(151, 151, 151, 0.2);
     transform: translateY(0);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: rgba(200, 200, 200, 0.3);
+    border-color: rgba(151, 151, 151, 0.5);
+
+    &:hover {
+      background-color: rgba(200, 200, 200, 0.3);
+      border-color: rgba(151, 151, 151, 0.5);
+      transform: none;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Game } from '@app/models/game.model';
 
-import { Observable, of } from 'rxjs';
+import { forkJoin, map, Observable, of } from 'rxjs';
 
 const GAME_THUMBNAILS_PREFIX = '/assets/game-thumbnails';
 
@@ -45,6 +45,17 @@ const GAMES: Game[] = [
 })
 export class GamesService {
   getGames(): Observable<Game[]> {
-    return of(GAMES);
+    return forkJoin([of(GAMES), this.getOwnedGameIds()]).pipe(
+      map(([games, ownedGameIds]) => {
+        return games.map((game) => ({
+          ...game,
+          isOwned: ownedGameIds.includes(game.id.toString()),
+        }));
+      }),
+    );
+  }
+
+  private getOwnedGameIds(): Observable<string[]> {
+    return of(['2']);
   }
 }

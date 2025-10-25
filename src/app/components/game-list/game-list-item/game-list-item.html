@@ -1,9 +1,6 @@
 <div class="game-list-item">
   <div class="image">
-    <img
-      [src]="game.imageUrl"
-      [alt]="game.title"
-    />
+    <img [src]="game.imageUrl" [alt]="game.title" />
   </div>
 
   <div class="details">
@@ -11,10 +8,13 @@
 
     <div class="details__footer">
       @if (game.discountPercent) {
-      <app-discount-tag [discountPercent]="game.discountPercent"></app-discount-tag>
+        <app-discount-tag [discountPercent]="game.discountPercent"></app-discount-tag>
       }
 
-      <app-cart-button [price]="game.price"></app-cart-button>
+      <app-cart-button
+        [price]="game.price"
+        [state]="game.isOwned ? 'OWNED' : 'NOT IN CART'"
+      ></app-cart-button>
     </div>
   </div>
 </div>
