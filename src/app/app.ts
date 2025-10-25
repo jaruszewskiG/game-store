@@ -9,4 +9,10 @@ import { MenuComponent } from './components/menu/menu';
   imports: [MenuComponent, HomePageComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class App {}
+export class App {
+  isCartDropdownOpen = false;
+
+  onCartDropdownStateChange(isOpen: boolean) {
+    this.isCartDropdownOpen = isOpen;
+  }
+}
