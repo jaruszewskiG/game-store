@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Cart } from './cart/cart';
 
 @Component({
@@ -7,10 +7,4 @@ import { Cart } from './cart/cart';
   styleUrl: './menu.scss',
   imports: [Cart],
 })
-export class MenuComponent {
-  @Output() cartDropdownStateChange = new EventEmitter<boolean>();
-
-  onCartDropdownStateChange(isOpen: boolean) {
-    this.cartDropdownStateChange.emit(isOpen);
-  }
-}
+export class MenuComponent {}

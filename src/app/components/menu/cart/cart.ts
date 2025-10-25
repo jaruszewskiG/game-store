@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CtaButton } from '@app/components/cta-button/cta-button';
 
 @Component({
@@ -8,12 +8,10 @@ import { CtaButton } from '@app/components/cta-button/cta-button';
   imports: [CtaButton],
 })
 export class Cart {
-  @Output() dropdownStateChange = new EventEmitter<boolean>();
   isDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
-    this.dropdownStateChange.emit(this.isDropdownOpen);
   }
 
   onClearCart() {
