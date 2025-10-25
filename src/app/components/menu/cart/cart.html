@@ -1,0 +1,20 @@
+<div class="cart">
+  <button class="cart__button" type="button" (click)="toggleDropdown()">
+    <img src="/assets/cart.svg" alt="Shopping Cart" class="cart__icon" />
+    <span class="cart__games-count">{{ 2 }}</span>
+  </button>
+
+  @if (isDropdownOpen) {
+    <div class="cart-dropdown">
+      <div class="cart-dropdown__header">
+        <div class="cart-dropdown__header--left">
+          <span class="cart-dropdown__item-count">2 ITEMS IN THE CART</span>
+        </div>
+        <div class="cart-dropdown__header--right">
+          <span class="cart-dropdown__total-price">$19.98</span>
+          <app-cta-button text="CLEAR CART" (click)="onClearCart()"></app-cta-button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
