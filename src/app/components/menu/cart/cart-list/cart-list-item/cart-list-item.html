@@ -1,0 +1,16 @@
+<div *ngIf="game$ | async as game" class="cart-list-item">
+  <div class="image">
+    <img [src]="game.imageUrl" [alt]="game.title" />
+  </div>
+
+  <div class="details">
+    <h3 class="details__title">{{ game.title }}</h3>
+    <button class="details__remove-button" (click)="cartStore.removeFromCart(game.id)">
+      Remove
+    </button>
+  </div>
+
+  <div class="price">
+    <span>${{ game.price }}</span>
+  </div>
+</div>
