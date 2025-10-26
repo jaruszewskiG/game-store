@@ -44,6 +44,10 @@ const GAMES: Game[] = [
   providedIn: 'root',
 })
 export class GamesService {
+  getGameById(id: number): Observable<Game | undefined> {
+    return this.getGames().pipe(map((games) => games.find((game) => game.id === id)));
+  }
+
   getGames(): Observable<Game[]> {
     return forkJoin([of(GAMES), this.getOwnedGameIds()]).pipe(
       map(([games, ownedGameIds]) => {
