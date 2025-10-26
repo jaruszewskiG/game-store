@@ -11,6 +11,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Game } from '@app/models/game.model';
 import { GamesService } from '@app/services/games.service';
+import { CartService, getInitialCartIds } from '../services/cart.service';
 
 type CartState = {
   gameIds: number[];
@@ -18,7 +19,7 @@ type CartState = {
 };
 
 const initialState: CartState = {
-  gameIds: [],
+  gameIds: getInitialCartIds(),
   isDropdownOpen: false,
 };
 
@@ -30,26 +31,32 @@ export const CartStore = signalStore(
     const gamesSignal = toSignal(gamesService.getGames(), { initialValue: [] as Game[] });
     return { gamesService, gamesSignal } as const;
   }),
-  withMethods((store) => ({
-    addToCart(gameId: number) {
-      patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
-    },
-    removeFromCart(gameId: number) {
-      patchState(store, (state) => ({
-        gameIds: state.gameIds.filter((id) => id !== gameId),
-      }));
-    },
-    clearCart() {
-      patchState(store, () => ({
-        gameIds: [],
-      }));
-    },
-    toggleDropdown() {
-      patchState(store, (state) => ({
-        isDropdownOpen: !state.isDropdownOpen,
-      }));
-    },
-  })),
+  withMethods((store) => {
+    const cartService = inject(CartService) as CartService;
+    return {
+      addToCart(gameId: number) {
+        patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
+        cartService.setIds(store.gameIds());
+      },
+      removeFromCart(gameId: number) {
+        patchState(store, (state) => ({
+          gameIds: state.gameIds.filter((id) => id !== gameId),
+        }));
+        cartService.setIds(store.gameIds());
+      },
+      clearCart() {
+        patchState(store, () => ({
+          gameIds: [],
+        }));
+        cartService.setIds([]);
+      },
+      toggleDropdown() {
+        patchState(store, (state) => ({
+          isDropdownOpen: !state.isDropdownOpen,
+        }));
+      },
+    };
+  }),
   withComputed((store) => ({
     isInCart: () => (id: number) => store.gameIds().includes(id),
     totalGames: () => store.gameIds().length,
