@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class CartButton {
   @Input() price!: number;
-  @Input() state: 'AVAILABLE' | 'IN CART' | 'OWNED' = 'AVAILABLE';
+  @Input() status: 'AVAILABLE' | 'IN CART' | 'OWNED' = 'AVAILABLE';
 }

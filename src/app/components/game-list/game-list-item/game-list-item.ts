@@ -16,6 +16,16 @@ export class GameListItem {
 
   @Input() game!: Game;
 
+  getStatus() {
+    if (this.game.isOwned) {
+      return 'OWNED';
+    }
+    if (this.cartStore.isInCart()(this.game.id)) {
+      return 'IN CART';
+    }
+    return 'AVAILABLE';
+  }
+
   addToCart() {
     if (this.game.isOwned || this.cartStore.isInCart()(this.game.id)) {
       return;

@@ -1,7 +1,7 @@
-<button class="cart-button" type="button" [disabled]="state === 'OWNED'">
-  @if (state === 'AVAILABLE') {
+<button class="cart-button" type="button" [disabled]="status === 'OWNED'">
+  @if (status === 'AVAILABLE') {
     ${{ price }}
   } @else {
-    {{ state }}
+    {{ status }}
   }
 </button>
