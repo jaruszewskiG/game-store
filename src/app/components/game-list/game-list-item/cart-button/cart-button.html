@@ -1,5 +1,5 @@
 <button class="cart-button" type="button" [disabled]="state === 'OWNED'">
-  @if (state === 'NOT IN CART') {
+  @if (state === 'AVAILABLE') {
     ${{ price }}
   } @else {
     {{ state }}
