@@ -1,0 +1,7 @@
+<button class="cart-button" type="button" [disabled]="state === 'OWNED'">
+  @if (state === 'AVAILABLE') {
+    ${{ price }}
+  } @else {
+    {{ state }}
+  }
+</button>

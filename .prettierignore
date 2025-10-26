@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.git/
+public/
+coverage/
+package-lock.json
+*.min.js
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.gif
+**/*.svg

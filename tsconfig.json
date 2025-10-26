@@ -14,7 +14,16 @@
     "importHelpers": true,
     "target": "ES2023",
     "module": "preserve",
-    "lib": ["ES2023", "DOM"]
+    "lib": ["ES2023", "DOM"],
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"],
+      "@features/*": ["app/features/*"],
+      "@utils/*": ["app/utils/*"]
+    },
+    "sourceMap": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
