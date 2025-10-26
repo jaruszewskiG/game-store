@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CtaButton } from '@app/components/cta-button/cta-button';
+import { CartStore } from '@app/stores/cart.store';
 
 @Component({
   selector: 'app-cart',
@@ -8,13 +9,5 @@ import { CtaButton } from '@app/components/cta-button/cta-button';
   imports: [CtaButton],
 })
 export class Cart {
-  isDropdownOpen = false;
-
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
-  onClearCart() {
-    console.log('Clear cart clicked');
-  }
+  readonly cartStore = inject(CartStore);
 }

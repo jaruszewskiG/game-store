@@ -13,7 +13,8 @@
 
       <app-cart-button
         [price]="game.price"
-        [state]="game.isOwned ? 'OWNED' : 'NOT IN CART'"
+        [state]="game.isOwned ? 'OWNED' : 'AVAILABLE'"
+        (click)="addToCart()"
       ></app-cart-button>
     </div>
   </div>
