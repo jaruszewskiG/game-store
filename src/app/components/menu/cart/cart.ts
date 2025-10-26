@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 
 import { CtaButton } from '@app/components/cta-button/cta-button';
 import { CartStore } from '@app/stores/cart.store';
@@ -12,4 +12,12 @@ import { CartList } from './cart-list/cart-list';
 })
 export class Cart {
   readonly cartStore = inject(CartStore);
+
+  // Close dropdown on Escape key press
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.cartStore.isDropdownOpen()) {
+      this.cartStore.toggleDropdown();
+    }
+  }
 }
