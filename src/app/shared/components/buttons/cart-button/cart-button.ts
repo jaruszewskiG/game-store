@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, output } from '@angular/core';
+import { CartButtonStatus } from '@models/cart.model';
 
 @Component({
   selector: 'app-cart-button',
@@ -8,7 +9,10 @@ import { ChangeDetectionStrategy, Component, Input, output } from '@angular/core
 })
 export class CartButtonComponent {
   @Input() price!: number;
-  @Input() status: 'AVAILABLE' | 'IN CART' | 'OWNED' = 'AVAILABLE';
+  @Input() status: CartButtonStatus = CartButtonStatus.Available;
 
   clicked = output<void>();
+
+  // Expose enum to template
+  readonly CartButtonStatus = CartButtonStatus;
 }
