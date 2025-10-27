@@ -1,19 +1,21 @@
-<div *ngIf="game$ | async as game" class="cart-list-item">
-  <div class="image">
-    <img [src]="game.imageUrl" [alt]="game.title" />
-  </div>
+@if (game(); as game) {
+  <div class="cart-list-item">
+    <div class="image">
+      <img [src]="game.imageUrl" [alt]="game.title" />
+    </div>
 
-  <div class="details">
-    <h3 class="details__title">{{ game.title }}</h3>
-    <div class="details__footer">
-      <span class="details__price">${{ game.price }}</span>
-      <button class="details__remove-button" (click)="cartStore.removeFromCart(game.id)">
-        Remove
-      </button>
+    <div class="details">
+      <h3 class="details__title">{{ game.title }}</h3>
+      <div class="details__footer">
+        <span class="details__price">${{ game.price }}</span>
+        <button class="details__remove-button" (click)="cartStore.removeFromCart(game.id)">
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <div class="price">
+      <span>${{ game.price }}</span>
     </div>
   </div>
-
-  <div class="price">
-    <span>${{ game.price }}</span>
-  </div>
-</div>
+}

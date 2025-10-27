@@ -7,5 +7,5 @@ export interface GameBase {
 }
 
 export interface Game extends GameBase {
-  isOwned?: boolean;
+  isOwned: boolean;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CartComponent } from '@features/cart/cart';
 
 @Component({
@@ -6,5 +6,6 @@ import { CartComponent } from '@features/cart/cart';
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
   imports: [CartComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {}

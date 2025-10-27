@@ -1,4 +1,4 @@
-<button class="cart-button" type="button" [disabled]="status === 'OWNED'">
+<button class="cart-button" type="button" [disabled]="status === 'OWNED'" (click)="clicked.emit()">
   @if (status === 'AVAILABLE') {
     ${{ price }}
   } @else {
