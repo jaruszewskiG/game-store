@@ -28,11 +28,14 @@ function persistCartIds(ids: number[]) {
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
+  private cartIds: number[] = getInitialCartIds();
+
   getIds(): number[] {
-    return getInitialCartIds();
+    return this.cartIds;
   }
 
   setIds(ids: number[]): void {
+    this.cartIds = ids;
     persistCartIds(ids);
   }
 }
