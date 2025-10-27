@@ -5,8 +5,8 @@ import { Game, GameBase } from '@app/models/game.model';
 
 import { forkJoin, map, Observable, shareReplay } from 'rxjs';
 
-const GAMES_URL = '/assets/data/games.json';
-const OWNED_URL = '/assets/data/owned.json';
+const GAMES_URL = 'assets/data/games.json';
+const OWNED_URL = 'assets/data/owned.json';
 
 @Injectable({
   providedIn: 'root',
