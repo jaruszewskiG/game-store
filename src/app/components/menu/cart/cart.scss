@@ -80,7 +80,7 @@
       // Make dropdown match cart list item width (196px image + 16px padding)
       width: 212px;
       max-width: calc(100vw - 24px);
-      right: 0;
+      right: -1px;
       left: auto;
 
       &__header {
