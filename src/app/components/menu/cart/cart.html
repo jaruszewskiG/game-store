@@ -1,6 +1,6 @@
-<div class="cart" [class.cart--is-open]="cartStore.isDropdownOpen()">
+<div class="cart" [class.is-open]="cartStore.isDropdownOpen()">
   <button class="cart__button" type="button" (click)="cartStore.toggleDropdown()">
-    <img src="/assets/cart.svg" alt="Shopping Cart" class="cart__icon" />
+    <img src="assets/cart.svg" alt="Shopping Cart" class="cart__icon" />
     <span class="cart__games-count">{{ cartStore.totalGames() }}</span>
   </button>
 
