@@ -5,9 +5,12 @@
 
   <div class="details">
     <h3 class="details__title">{{ game.title }}</h3>
-    <button class="details__remove-button" (click)="cartStore.removeFromCart(game.id)">
-      Remove
-    </button>
+    <div class="details__footer">
+      <span class="details__price">${{ game.price }}</span>
+      <button class="details__remove-button" (click)="cartStore.removeFromCart(game.id)">
+        Remove
+      </button>
+    </div>
   </div>
 
   <div class="price">

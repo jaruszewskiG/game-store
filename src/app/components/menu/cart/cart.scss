@@ -76,14 +76,16 @@
     }
 
     // Only adjust when viewport forces dropdown to be narrower
-    @media (max-width: 390px) {
-      // Make dropdown full-width with margin
-      width: calc(100vw - 24px);
-      right: -12px;
+    @media (max-width: 480px) {
+      // Make dropdown match cart list item width (196px image + 16px padding)
+      width: 212px;
+      max-width: calc(100vw - 24px);
+      right: 0;
       left: auto;
 
       &__header {
         gap: 6px;
+        margin: 8px;
       }
 
       &__item-count,
@@ -92,12 +94,17 @@
       }
 
       &__total-price {
-        margin-left: 8px;
+        margin-left: 0;
       }
 
       app-cta-button {
         flex-basis: 100%;
         margin-left: 0;
+
+        ::ng-deep .cta-button {
+          width: 100%;
+          box-sizing: border-box;
+        }
       }
     }
   }
