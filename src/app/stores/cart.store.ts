@@ -44,14 +44,18 @@ export const CartStore = signalStore(
   withMethods((store) => {
     return {
       addToCart(gameId: number) {
-        patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
-        store.cartService.setIds(store.gameIds());
+        patchState(store, (state) => {
+          const newIds = [...state.gameIds, gameId];
+          store.cartService.setIds(newIds);
+          return { gameIds: newIds };
+        });
       },
       removeFromCart(gameId: number) {
-        patchState(store, (state) => ({
-          gameIds: state.gameIds.filter((id) => id !== gameId),
-        }));
-        store.cartService.setIds(store.gameIds());
+        patchState(store, (state) => {
+          const newIds = state.gameIds.filter((id) => id !== gameId);
+          store.cartService.setIds(newIds);
+          return { gameIds: newIds };
+        });
       },
       clearCart() {
         patchState(store, () => ({
