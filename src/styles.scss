@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
 *,
 *::before,
 *::after {
@@ -13,6 +16,6 @@ body {
 }
 
 * {
-  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
-  line-height: 1.5;
+  font-family: $font-family;
+  line-height: $line-height-relaxed;
 }

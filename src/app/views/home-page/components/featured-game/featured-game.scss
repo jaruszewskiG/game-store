@@ -1,13 +1,15 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
 .featured-game {
-  margin-top: 28px;
+  margin-top: $spacing-4xl;
 
   .heading {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 100%;
-    letter-spacing: 0px;
+    @include text-bold;
+    font-size: $font-size-md;
+    line-height: $spacing-2xl;
     vertical-align: bottom;
-    margin-bottom: 20px;
+    margin-bottom: $spacing-2xl;
   }
 
   &__image-container {
@@ -23,23 +25,21 @@
   }
 
   &__secret-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 24px 20px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
+    @include absolute-center;
+    @include button-base;
+    padding: $spacing-3xl $spacing-2xl;
+    @include text-semibold;
+    line-height: $spacing-2xl;
     opacity: 0;
   }
 
-  // Tablet - ensure minimum height for prominence
-  @media (max-width: 768px) {
-    margin-top: 20px;
+  @include respond-to(md) {
+    margin-top: $spacing-2xl;
 
     .heading {
-      margin-bottom: 16px;
+      margin-bottom: $spacing-xl;
+      font-size: $font-size-lg;
+      line-height: 22px;
     }
 
     &__image-container {
@@ -56,18 +56,19 @@
     }
 
     &__secret-button {
-      padding: 18px 16px;
-      font-size: 13px;
+      padding: 18px $spacing-xl;
+      font-size: $font-size-base;
+      line-height: $spacing-2xl;
     }
   }
 
-  // Mobile
-  @media (max-width: 480px) {
-    margin-top: 16px;
+  @include respond-to(sm) {
+    margin-top: $spacing-xl;
 
     .heading {
-      margin-bottom: 12px;
-      font-size: 14px;
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-md;
+      line-height: $spacing-2xl;
     }
 
     &__image-container {
@@ -79,19 +80,25 @@
     }
 
     &__secret-button {
-      padding: 14px 12px;
-      font-size: 12px;
+      padding: 14px $spacing-lg;
+      font-size: $font-size-sm;
+      line-height: 18px;
     }
   }
 
-  // Very small screens
-  @media (max-width: 375px) {
+  @include respond-to(xs) {
     &__image-container {
       min-height: 18vh;
     }
 
     img {
       min-height: 18vh;
+    }
+
+    &__secret-button {
+      font-size: $font-size-xs;
+      line-height: $spacing-xl;
+      padding: $spacing-lg 10px;
     }
   }
 }
