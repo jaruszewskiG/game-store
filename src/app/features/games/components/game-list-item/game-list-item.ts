@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { DiscountTagComponent } from '@shared/components/tags/discount-tag/discount-tag';
 import { CartButtonComponent } from '@shared/components/buttons/cart-button/cart-button';
 import { Game } from '@models/game.model';
@@ -9,11 +9,12 @@ import { CartStore } from '@stores/cart.store';
   imports: [DiscountTagComponent, CartButtonComponent],
   templateUrl: './game-list-item.html',
   styleUrl: './game-list-item.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameListItemComponent {
   private readonly cartStore = inject(CartStore);
 
-  @Input() game!: Game;
+  @Input({ required: true }) game!: Game;
 
   getStatus() {
     if (this.game.isOwned) {
