@@ -2,6 +2,7 @@ import {
   patchState,
   signalStore,
   withComputed,
+  withHooks,
   withMethods,
   withProps,
   withState,
@@ -11,7 +12,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Game } from '@app/models/game.model';
 import { GamesService } from '@app/services/games.service';
-import { CartService, getInitialCartIds } from '../services/cart.service';
+import { CartService } from '../services/cart.service';
 
 type CartState = {
   gameIds: number[];
@@ -19,7 +20,7 @@ type CartState = {
 };
 
 const initialState: CartState = {
-  gameIds: getInitialCartIds(),
+  gameIds: [],
   isDropdownOpen: false,
 };
 
@@ -27,28 +28,35 @@ export const CartStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withProps(() => {
+    const cartService = inject(CartService);
     const gamesService = inject(GamesService);
     const gamesSignal = toSignal(gamesService.getGames(), { initialValue: [] as Game[] });
-    return { gamesService, gamesSignal } as const;
+    return { cartService, gamesSignal } as const;
+  }),
+  withHooks((store) => {
+    return {
+      onInit() {
+        patchState(store, () => ({ gameIds: store.cartService.getIds() }));
+      },
+    };
   }),
   withMethods((store) => {
-    const cartService = inject(CartService);
     return {
       addToCart(gameId: number) {
         patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
-        cartService.setIds(store.gameIds());
+        store.cartService.setIds(store.gameIds());
       },
       removeFromCart(gameId: number) {
         patchState(store, (state) => ({
           gameIds: state.gameIds.filter((id) => id !== gameId),
         }));
-        cartService.setIds(store.gameIds());
+        store.cartService.setIds(store.gameIds());
       },
       clearCart() {
         patchState(store, () => ({
           gameIds: [],
         }));
-        cartService.setIds([]);
+        store.cartService.setIds([]);
       },
       toggleDropdown() {
         patchState(store, (state) => ({
