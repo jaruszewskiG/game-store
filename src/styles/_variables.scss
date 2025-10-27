@@ -1,20 +1,24 @@
 // Colors
-$color-primary: #7a3dc6;
-$color-primary-light: #b65ae2;
-$color-primary-hover: #8b4dd7;
-$color-primary-hover-light: #c76bf3;
+$color-primary: rgba(122, 61, 198, 1);
+$color-primary-light: rgba(182, 90, 226, 1);
+$color-primary-hover: rgba(139, 77, 215, 1);
+$color-primary-hover-light: rgba(199, 107, 243, 1);
 $color-success: rgba(0, 144, 94, 1);
 $color-border: rgba(184, 184, 184, 1);
 $color-border-dark: rgba(151, 151, 151, 0.8);
 $color-text: rgba(64, 64, 64, 1);
-$color-white: #ffffff;
-$color-bg-gray: #dedede;
+$color-white: rgba(255, 255, 255, 1);
+$color-bg-gray: rgba(222, 222, 222, 1);
 $color-bg-hover: rgba(151, 151, 151, 0.1);
 $color-bg-active: rgba(151, 151, 151, 0.2);
 $color-bg-disabled: rgba(200, 200, 200, 0.3);
 $color-shadow: rgba(198, 198, 198, 0.5);
 $color-backdrop: rgba(0, 0, 0, 0.15);
 $color-shadow-dark: rgba(0, 0, 0, 0.1);
+
+// Background gradients
+$color-bg-gradient-start: rgba(108, 54, 173, 0.1);
+$color-bg-gradient-end: rgba(194, 194, 194, 0.5);
 
 // Spacing
 $spacing-xs: 2px;
