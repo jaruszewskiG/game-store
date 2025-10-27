@@ -26,6 +26,7 @@ export class GamesService {
           isOwned: ownedGameIds.includes(game.id.toString()),
         }));
       }),
+      shareReplay(1),
     );
   }
 

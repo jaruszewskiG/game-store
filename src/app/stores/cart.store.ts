@@ -1,3 +1,6 @@
+import { inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 import {
   patchState,
   signalStore,
@@ -7,8 +10,6 @@ import {
   withProps,
   withState,
 } from '@ngrx/signals';
-import { inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Game } from '@app/models/game.model';
 import { GamesService } from '@app/services/games.service';
