@@ -61,25 +61,10 @@
     }
   }
 
-  &__overlay {
-    position: fixed;
-    inset: 0;
-    background: transparent; /* click-catcher only */
-    z-index: 999; /* under dropdown (1000), above page */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 160ms ease-out;
-  }
-
-  &--is-open {
+  &.cart--is-open {
     .cart-dropdown {
       opacity: 1;
       transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .cart__overlay {
-      opacity: 1;
       pointer-events: auto;
     }
   }

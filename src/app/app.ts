@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { HomePageComponent } from './views/home-page/home-page';
 import { MenuComponent } from './components/menu/menu';
 import { CartStore } from './stores/cart.store';
@@ -10,10 +10,6 @@ import { CartStore } from './stores/cart.store';
   imports: [MenuComponent, HomePageComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class App implements OnInit {
-  private readonly cartStore = inject(CartStore);
-
-  ngOnInit() {
-    setInterval(() => console.log(this.cartStore.gameIds()), 1000);
-  }
+export class App {
+  readonly cartStore = inject(CartStore);
 }
