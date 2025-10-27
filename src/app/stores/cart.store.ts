@@ -1,16 +1,19 @@
+import { inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 import {
   patchState,
   signalStore,
   withComputed,
+  withHooks,
   withMethods,
   withProps,
   withState,
 } from '@ngrx/signals';
-import { inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Game } from '@app/models/game.model';
 import { GamesService } from '@app/services/games.service';
+import { CartService } from '../services/cart.service';
 
 type CartState = {
   gameIds: number[];
@@ -26,30 +29,47 @@ export const CartStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
   withProps(() => {
+    const cartService = inject(CartService);
     const gamesService = inject(GamesService);
     const gamesSignal = toSignal(gamesService.getGames(), { initialValue: [] as Game[] });
-    return { gamesService, gamesSignal } as const;
+    return { cartService, gamesSignal } as const;
   }),
-  withMethods((store) => ({
-    addToCart(gameId: number) {
-      patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
-    },
-    removeFromCart(gameId: number) {
-      patchState(store, (state) => ({
-        gameIds: state.gameIds.filter((id) => id !== gameId),
-      }));
-    },
-    clearCart() {
-      patchState(store, () => ({
-        gameIds: [],
-      }));
-    },
-    toggleDropdown() {
-      patchState(store, (state) => ({
-        isDropdownOpen: !state.isDropdownOpen,
-      }));
-    },
-  })),
+  withHooks((store) => {
+    return {
+      onInit() {
+        patchState(store, () => ({ gameIds: store.cartService.getIds() }));
+      },
+    };
+  }),
+  withMethods((store) => {
+    return {
+      addToCart(gameId: number) {
+        patchState(store, (state) => {
+          const newIds = [...state.gameIds, gameId];
+          store.cartService.setIds(newIds);
+          return { gameIds: newIds };
+        });
+      },
+      removeFromCart(gameId: number) {
+        patchState(store, (state) => {
+          const newIds = state.gameIds.filter((id) => id !== gameId);
+          store.cartService.setIds(newIds);
+          return { gameIds: newIds };
+        });
+      },
+      clearCart() {
+        patchState(store, () => ({
+          gameIds: [],
+        }));
+        store.cartService.setIds([]);
+      },
+      toggleDropdown() {
+        patchState(store, (state) => ({
+          isDropdownOpen: !state.isDropdownOpen,
+        }));
+      },
+    };
+  }),
   withComputed((store) => ({
     isInCart: () => (id: number) => store.gameIds().includes(id),
     totalGames: () => store.gameIds().length,
