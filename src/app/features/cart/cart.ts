@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
 import { CtaButtonComponent } from '@shared/components/buttons/cta-button/cta-button';
 import { CartStore } from '@stores/cart.store';
 import { CartListComponent } from './components/cart-list/cart-list';
@@ -8,6 +8,7 @@ import { CartListComponent } from './components/cart-list/cart-list';
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
   imports: [CtaButtonComponent, CartListComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent {
   readonly cartStore = inject(CartStore);

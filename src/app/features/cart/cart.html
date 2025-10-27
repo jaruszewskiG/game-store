@@ -11,7 +11,7 @@
         CART
       </span>
       <span class="cart-dropdown__total-price">${{ cartStore.totalPrice() }}</span>
-      <app-cta-button text="CLEAR CART" (click)="cartStore.clearCart()"></app-cta-button>
+      <app-cta-button label="CLEAR CART" (clicked)="cartStore.clearCart()"></app-cta-button>
     </div>
     <div class="cart-dropdown__list">
       <app-cart-list></app-cart-list>
