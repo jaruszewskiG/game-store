@@ -3,6 +3,7 @@ import { DiscountTagComponent } from '@shared/components/tags/discount-tag/disco
 import { CartButtonComponent } from '@shared/components/buttons/cart-button/cart-button';
 import { Game } from '@models/game.model';
 import { CartStore } from '@stores/cart.store';
+import { CartButtonStatus } from '@models/cart.model';
 
 @Component({
   selector: 'app-game-list-item',
@@ -16,14 +17,14 @@ export class GameListItemComponent {
 
   @Input({ required: true }) game!: Game;
 
-  getStatus() {
+  getStatus(): CartButtonStatus {
     if (this.game.isOwned) {
-      return 'OWNED';
+      return CartButtonStatus.Owned;
     }
     if (this.cartStore.isInCart()(this.game.id)) {
-      return 'IN CART';
+      return CartButtonStatus.InCart;
     }
-    return 'AVAILABLE';
+    return CartButtonStatus.Available;
   }
 
   addToCart() {
