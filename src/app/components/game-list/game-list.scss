@@ -1,7 +1,7 @@
 .game-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
   gap: 16px;
@@ -40,6 +40,13 @@
     & > * {
       flex: 0 1 calc(50% - 5px);
       max-width: none;
+    }
+  }
+
+  // Very small screens - 1 column
+  @media (max-width: 375px) {
+    & > * {
+      flex: 0 1 100%;
     }
   }
 }
