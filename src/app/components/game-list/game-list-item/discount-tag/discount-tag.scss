@@ -1,11 +1,24 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
 .discount-tag {
   padding: 3px 6px 5px 6px;
-  background: rgba(0, 144, 94, 1);
-  border-radius: 2px;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 100%;
-  letter-spacing: 0px;
+  background: $color-success;
+  border-radius: $border-radius-sm;
+  color: $color-white;
+  @include text-semibold;
+  font-size: $font-size-sm;
   text-align: right;
+
+  @include respond-to(md) {
+    font-size: $font-size-base;
+    line-height: $spacing-xl;
+    padding: 4px $spacing-md 5px $spacing-md;
+  }
+
+  @include respond-to(sm) {
+    font-size: $font-size-base;
+    line-height: $spacing-xl;
+    padding: 4px $spacing-md 5px $spacing-md;
+  }
 }

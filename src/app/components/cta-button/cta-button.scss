@@ -1,22 +1,35 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .cta-button {
-  background: linear-gradient(0deg, #7a3dc6 0%, #b65ae2 100%);
-  font-size: 14px;
+  @include button-base;
+  background: linear-gradient(0deg, $color-primary 0%, $color-primary-light 100%);
+  font-size: $font-size-base;
   line-height: 22px;
-  letter-spacing: 0px;
   text-align: center;
   vertical-align: middle;
-  color: #ffffff;
-  padding: 10px 28px 12px 28px;
-  border: none;
-  cursor: pointer;
-  transition: all 150ms ease-in-out;
+  color: $color-white;
+  padding: 10px $spacing-4xl 12px $spacing-4xl;
 
-  &:hover {
-    background: linear-gradient(0deg, #8b4dd7 0%, #c76bf3 100%);
-    box-shadow: 0 4px 8px rgba(122, 61, 198, 0.3);
+  &:hover:not(:disabled) {
+    background: linear-gradient(0deg, $color-primary-hover 0%, $color-primary-hover-light 100%);
+    box-shadow: $box-shadow-button;
   }
 
-  &:active {
-    box-shadow: 0 2px 4px rgba(122, 61, 198, 0.2);
+  &:active:not(:disabled) {
+    box-shadow: $box-shadow-button-active;
+  }
+
+  @include respond-to(md) {
+    font-size: $font-size-base;
+    line-height: $spacing-2xl;
+    padding: 10px $spacing-3xl 11px $spacing-3xl;
+  }
+
+  @include respond-to(sm) {
+    @include touch-target;
+    font-size: $font-size-base;
+    line-height: $spacing-2xl;
+    padding: $spacing-lg $spacing-2xl;
   }
 }

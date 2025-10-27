@@ -1,3 +1,6 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
 .app {
   position: relative;
 
@@ -6,20 +9,23 @@
   }
 
   &__backdrop {
-    position: fixed;
-    top: 59px; /* height of menu */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.15);
-    z-index: 998; /* below cart dropdown (1000) */
+    @include fixed-overlay;
+    top: $menu-height;
+    background-color: $color-backdrop;
+    z-index: $z-index-backdrop;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 160ms ease-out;
+    transition: opacity $transition-base;
 
     &--visible {
       opacity: 1;
       pointer-events: auto;
+    }
+  }
+
+  @include respond-to(sm) {
+    &__backdrop {
+      top: $menu-height-mobile;
     }
   }
 }
