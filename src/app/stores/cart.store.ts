@@ -32,7 +32,7 @@ export const CartStore = signalStore(
     return { gamesService, gamesSignal } as const;
   }),
   withMethods((store) => {
-    const cartService = inject(CartService) as CartService;
+    const cartService = inject(CartService);
     return {
       addToCart(gameId: number) {
         patchState(store, (state) => ({ gameIds: [...state.gameIds, gameId] }));
