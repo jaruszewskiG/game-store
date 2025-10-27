@@ -1,1 +1,11 @@
-<app-menu></app-menu> <app-home-page></app-home-page>
+<div class="app">
+  <app-menu></app-menu>
+  <div class="app__content">
+    <div
+      class="app__backdrop"
+      [class.app__backdrop--visible]="cartStore.isDropdownOpen()"
+      (click)="cartStore.toggleDropdown()"
+    ></div>
+    <app-home-page></app-home-page>
+  </div>
+</div>

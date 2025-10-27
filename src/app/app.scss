@@ -1,0 +1,22 @@
+.app {
+  position: relative;
+
+  &__content {
+    position: relative;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 998; /* below cart dropdown (1000) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease-out;
+
+    &--visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}

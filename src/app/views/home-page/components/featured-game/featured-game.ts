@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './featured-game.html',
   styleUrl: './featured-game.scss',
 })
-export class FeaturedGame {}
+export class FeaturedGame {
+  onSecretButtonClick(): void {
+    alert('I have totally implemented the secret button ;)');
+  }
+}

@@ -1,38 +1,19 @@
-<div
-  class="cart"
-  [class.cart--is-open]="cartStore.isDropdownOpen()"
->
-  <button
-    class="cart__button"
-    type="button"
-    (click)="cartStore.toggleDropdown()"
-  >
-    <img
-      src="assets/cart.svg"
-      alt="Shopping Cart"
-      class="cart__icon"
-    />
+<div class="cart" [class.cart--is-open]="cartStore.isDropdownOpen()">
+  <button class="cart__button" type="button" (click)="cartStore.toggleDropdown()">
+    <img src="assets/cart.svg" alt="Shopping Cart" class="cart__icon" />
     <span class="cart__games-count">{{ cartStore.totalGames() }}</span>
   </button>
 
-  <div
-    class="cart__overlay"
-    (click)="cartStore.toggleDropdown()"
-  ></div>
-  <div
-    class="cart-dropdown"
-    [attr.aria-hidden]="!cartStore.isDropdownOpen()"
-  >
+  <div class="cart-dropdown" [attr.aria-hidden]="!cartStore.isDropdownOpen()">
     <div class="cart-dropdown__header">
       <div class="cart-dropdown__header--left">
-        <span class="cart-dropdown__item-count">{{ cartStore.totalGames() }} ITEMS IN THE CART</span>
+        <span class="cart-dropdown__item-count"
+          >{{ cartStore.totalGames() }} ITEMS IN THE CART</span
+        >
       </div>
       <div class="cart-dropdown__header--right">
         <span class="cart-dropdown__total-price">${{ cartStore.totalPrice() }}</span>
-        <app-cta-button
-          text="CLEAR CART"
-          (click)="cartStore.clearCart()"
-        ></app-cta-button>
+        <app-cta-button text="CLEAR CART" (click)="cartStore.clearCart()"></app-cta-button>
       </div>
     </div>
     <div class="cart-dropdown__list">
