@@ -30,6 +30,11 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": ".nojekyll",
+                "input": ".",
+                "output": "/"
               }
             ],
             "styles": ["src/styles.scss"]
