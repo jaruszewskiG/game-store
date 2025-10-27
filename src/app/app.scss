@@ -22,4 +22,11 @@
       pointer-events: auto;
     }
   }
+
+  // Adjust backdrop for mobile menu height
+  @media (max-width: 480px) {
+    &__backdrop {
+      top: 50px;
+    }
+  }
 }

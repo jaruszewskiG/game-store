@@ -18,6 +18,7 @@
   img {
     width: 100%;
     max-width: 100%;
+    height: auto;
     display: block;
   }
 
@@ -31,5 +32,34 @@
     font-weight: 600;
     cursor: pointer;
     opacity: 0;
+  }
+
+  // Tablet
+  @media (max-width: 768px) {
+    margin-top: 20px;
+
+    .heading {
+      margin-bottom: 16px;
+    }
+
+    &__secret-button {
+      padding: 18px 16px;
+      font-size: 13px;
+    }
+  }
+
+  // Mobile
+  @media (max-width: 480px) {
+    margin-top: 16px;
+
+    .heading {
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    &__secret-button {
+      padding: 14px 12px;
+      font-size: 12px;
+    }
   }
 }

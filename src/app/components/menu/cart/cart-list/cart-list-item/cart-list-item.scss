@@ -6,9 +6,11 @@
 
   .image {
     max-width: 100px;
+    flex-shrink: 0;
 
     img {
       width: 100%;
+      height: auto;
       display: block;
     }
   }
@@ -22,6 +24,8 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
 
     &__title {
       white-space: nowrap;
@@ -54,7 +58,8 @@
   }
 
   .price {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
+    margin-left: auto;
 
     & > * {
       display: inline-block;
@@ -63,6 +68,7 @@
       font-weight: 600;
       font-size: 13px;
       line-height: 100%;
+      white-space: nowrap;
     }
   }
 
@@ -70,6 +76,44 @@
     .details__remove-button {
       opacity: 1;
       pointer-events: auto;
+    }
+  }
+
+  // Show remove button on touch devices (no hover capability)
+  @media (hover: none) {
+    .details__remove-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  // Mobile optimizations
+  @media (max-width: 480px) {
+    margin: 4px 6px 4px 4px;
+
+    .image {
+      max-width: 80px;
+    }
+
+    .details {
+      margin: 6px;
+      gap: 4px;
+
+      &__title {
+        font-size: 13px;
+        line-height: 16px;
+      }
+
+      &__remove-button {
+        font-size: 11px;
+        line-height: 12px;
+      }
+    }
+
+    .price {
+      & > * {
+        font-size: 12px;
+      }
     }
   }
 }

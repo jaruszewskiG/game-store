@@ -1,15 +1,45 @@
 .game-list {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+  gap: 16px;
   box-sizing: border-box;
 
   & > * {
-    flex: 1 1 0;
+    flex: 0 1 calc(20% - 13px);
     min-width: 0;
     max-width: 196px;
     box-sizing: border-box;
+  }
+
+  // Tablet large - 4 columns
+  @media (max-width: 1060px) {
+    gap: 14px;
+
+    & > * {
+      flex: 0 1 calc(25% - 11px);
+    }
+  }
+
+  // Tablet - 3 columns
+  @media (max-width: 768px) {
+    gap: 12px;
+
+    & > * {
+      flex: 0 1 calc(33.333% - 8px);
+      max-width: 240px;
+    }
+  }
+
+  // Mobile - 2 columns
+  @media (max-width: 480px) {
+    gap: 10px;
+
+    & > * {
+      flex: 0 1 calc(50% - 5px);
+      max-width: none;
+    }
   }
 }

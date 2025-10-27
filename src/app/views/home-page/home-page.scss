@@ -3,6 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
 
   .featured-game {
     width: 100%;
@@ -13,5 +15,21 @@
   .game-list {
     width: 100%;
     max-width: 1060px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+
+    .featured-game {
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 12px;
+
+    .featured-game {
+      margin-bottom: 12px;
+    }
   }
 }

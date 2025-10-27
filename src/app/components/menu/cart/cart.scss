@@ -49,9 +49,11 @@
 
     &__header {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       margin: 12px 10px;
+      gap: 8px;
     }
 
     &__item-count,
@@ -60,8 +62,43 @@
       font-size: 15px;
     }
 
+    &__item-count {
+      flex-shrink: 0;
+    }
+
+    &__total-price {
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
     app-cta-button {
       margin-left: 8px;
+    }
+
+    // Only adjust when viewport forces dropdown to be narrower
+    @media (max-width: 390px) {
+      // Make dropdown full-width with margin
+      width: calc(100vw - 24px);
+      right: -12px;
+      left: auto;
+
+      &__header {
+        gap: 6px;
+      }
+
+      &__item-count,
+      &__total-price {
+        font-size: 14px;
+      }
+
+      &__total-price {
+        margin-left: 8px;
+      }
+
+      app-cta-button {
+        flex-basis: 100%;
+        margin-left: 0;
+      }
     }
   }
 
@@ -70,6 +107,22 @@
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+    }
+  }
+
+  // Mobile cart button adjustments
+  @media (max-width: 480px) {
+    &__button {
+      padding: 0 12px 0 14px;
+    }
+
+    &__icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    &__games-count {
+      font-size: 13px;
     }
   }
 }

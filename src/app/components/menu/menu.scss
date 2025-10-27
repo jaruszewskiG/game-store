@@ -13,6 +13,8 @@
     width: 100%;
     max-width: 1060px;
     height: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .container {
@@ -43,5 +45,37 @@
     width: auto;
     height: auto;
     display: block;
+  }
+
+  // Tablet - add padding when content needs spacing from edges
+  @media (max-width: 1080px) {
+    &__content {
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__content {
+      padding: 0 16px;
+    }
+  }
+
+  // Mobile
+  @media (max-width: 480px) {
+    height: 50px;
+
+    &__content {
+      padding: 0 12px;
+    }
+
+    .item {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    .logo {
+      max-width: 36px;
+      max-height: 32px;
+    }
   }
 }
