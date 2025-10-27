@@ -9,4 +9,14 @@
   padding: 10px 28px 12px 28px;
   border: none;
   cursor: pointer;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background: linear-gradient(0deg, #8b4dd7 0%, #c76bf3 100%);
+    box-shadow: 0 4px 8px rgba(122, 61, 198, 0.3);
+  }
+
+  &:active {
+    box-shadow: 0 2px 4px rgba(122, 61, 198, 0.2);
+  }
 }
