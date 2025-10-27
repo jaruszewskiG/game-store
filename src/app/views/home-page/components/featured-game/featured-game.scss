@@ -7,7 +7,7 @@
   .heading {
     @include text-bold;
     font-size: $font-size-md;
-    line-height: $spacing-2xl;
+    line-height: $line-height-base;
     vertical-align: bottom;
     margin-bottom: $spacing-2xl;
   }
