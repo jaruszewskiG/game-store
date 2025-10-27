@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CartStore } from '@stores/cart.store';
-import { CartListItem } from '@features/cart/components/cart-list-item/cart-list-item';
+import { CartListItemComponent } from '@features/cart/components/cart-list-item/cart-list-item';
 
 @Component({
   selector: 'app-cart-list',
-  imports: [CartListItem],
+  imports: [CartListItemComponent],
   templateUrl: './cart-list.html',
   styleUrl: './cart-list.scss',
 })
-export class CartList {
+export class CartListComponent {
   readonly cartStore = inject(CartStore);
 }

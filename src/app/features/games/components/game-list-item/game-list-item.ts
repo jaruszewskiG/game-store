@@ -1,16 +1,16 @@
 import { Component, inject, Input } from '@angular/core';
-import { DiscountTag } from '@shared/components/tags/discount-tag/discount-tag';
-import { CartButton } from '@shared/components/buttons/cart-button/cart-button';
+import { DiscountTagComponent } from '@shared/components/tags/discount-tag/discount-tag';
+import { CartButtonComponent } from '@shared/components/buttons/cart-button/cart-button';
 import { Game } from '@models/game.model';
 import { CartStore } from '@stores/cart.store';
 
 @Component({
   selector: 'app-game-list-item',
-  imports: [DiscountTag, CartButton],
+  imports: [DiscountTagComponent, CartButtonComponent],
   templateUrl: './game-list-item.html',
   styleUrl: './game-list-item.scss',
 })
-export class GameListItem {
+export class GameListItemComponent {
   private readonly cartStore = inject(CartStore);
 
   @Input() game!: Game;

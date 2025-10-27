@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './cta-button.html',
   styleUrl: './cta-button.scss',
 })
-export class CtaButton {
+export class CtaButtonComponent {
   @Input() text!: string;
 }

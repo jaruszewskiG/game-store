@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './discount-tag.html',
   styleUrl: './discount-tag.scss',
 })
-export class DiscountTag {
+export class DiscountTagComponent {
   @Input() discountPercent!: number;
 }

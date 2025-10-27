@@ -11,7 +11,7 @@ import { CartStore } from '@stores/cart.store';
   styleUrl: './cart-list-item.scss',
   imports: [CommonModule, AsyncPipe],
 })
-export class CartListItem implements OnInit {
+export class CartListItemComponent implements OnInit {
   private readonly gamesService = inject(GamesService);
   readonly cartStore = inject(CartStore);
 

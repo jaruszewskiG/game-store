@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DiscountTag } from './discount-tag';
+import { DiscountTagComponent } from './discount-tag';
 
-describe('DiscountTag', () => {
-  let component: DiscountTag;
-  let fixture: ComponentFixture<DiscountTag>;
+describe('DiscountTagComponent', () => {
+  let component: DiscountTagComponent;
+  let fixture: ComponentFixture<DiscountTagComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DiscountTag],
+      imports: [DiscountTagComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DiscountTag);
+    fixture = TestBed.createComponent(DiscountTagComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

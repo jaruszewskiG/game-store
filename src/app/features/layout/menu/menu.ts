@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Cart } from '@features/cart/cart';
+import { CartComponent } from '@features/cart/cart';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
-  imports: [Cart],
+  imports: [CartComponent],
 })
 export class MenuComponent {}

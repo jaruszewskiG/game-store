@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './cart-button.html',
   styleUrl: './cart-button.scss',
 })
-export class CartButton {
+export class CartButtonComponent {
   @Input() price!: number;
   @Input() status: 'AVAILABLE' | 'IN CART' | 'OWNED' = 'AVAILABLE';
 }
