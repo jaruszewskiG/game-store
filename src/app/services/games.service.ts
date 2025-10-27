@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Game } from '@app/models/game.model';
+import { Game, GameBase } from '@app/models/game.model';
 
 import { forkJoin, map, Observable, shareReplay } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class GamesService {
   }
 
   getGames(): Observable<Game[]> {
-    return forkJoin([this.getGenericGames(), this.getOwnedGameIds()]).pipe(
+    return forkJoin([this.getGameBases(), this.getOwnedGameIds()]).pipe(
       map(([games, ownedGameIds]) => {
         return games.map((game) => ({
           ...game,
@@ -29,8 +29,8 @@ export class GamesService {
     );
   }
 
-  private getGenericGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(GAMES_URL).pipe(shareReplay(1));
+  private getGameBases(): Observable<GameBase[]> {
+    return this.http.get<GameBase[]>(GAMES_URL).pipe(shareReplay(1));
   }
 
   private getOwnedGameIds(): Observable<string[]> {
