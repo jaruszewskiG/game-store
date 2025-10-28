@@ -63,11 +63,11 @@ export class GamesService {
       timer(SIMULATED_DELAY_MS).pipe(
         switchMap(() =>
           this.http.get<GameBase>(FEATURED_GAME_URL).pipe(
-            shareReplay(1),
             catchError((error) => {
               console.error('Error loading featured game:', error);
               return of(null); // Return null on error
             }),
+            shareReplay(1),
           ),
         ),
       ),
