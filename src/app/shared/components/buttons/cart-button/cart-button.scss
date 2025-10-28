@@ -5,6 +5,7 @@
   @include button-base;
   @include border-standard;
   @include button-hover-lift;
+  @include focus-visible;
   display: block;
   padding: 3px 6px 4px 6px;
   color: $color-text;

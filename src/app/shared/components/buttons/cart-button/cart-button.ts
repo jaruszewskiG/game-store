@@ -8,11 +8,25 @@ import { CartButtonStatus } from '@models/cart.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartButtonComponent {
-  @Input() price!: number;
+  @Input({ required: true }) price!: number;
   @Input() status: CartButtonStatus = CartButtonStatus.Available;
+  @Input() gameTitle: string = '';
 
   clicked = output<void>();
 
   // Expose enum to template
   readonly CartButtonStatus = CartButtonStatus;
+
+  getAriaLabel(): string {
+    if (this.status === CartButtonStatus.Available) {
+      return `Add ${this.gameTitle} to cart for $${this.price}`;
+    } else if (this.status === CartButtonStatus.InCart) {
+      return `${this.gameTitle} is in cart, $${this.price}`;
+    }
+    return `${this.gameTitle} is already owned, $${this.price}`;
+  }
+
+  getStatusText(): string {
+    return this.status === CartButtonStatus.Available ? `$${this.price}` : this.status;
+  }
 }

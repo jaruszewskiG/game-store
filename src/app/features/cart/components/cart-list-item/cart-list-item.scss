@@ -52,6 +52,7 @@
 
     &__remove-button {
       @include button-reset;
+      @include focus-visible;
       font-weight: $font-weight-regular;
       font-size: $font-size-xs;
       line-height: $spacing-xl;

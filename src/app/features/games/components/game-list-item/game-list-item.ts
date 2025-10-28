@@ -34,4 +34,16 @@ export class GameListItemComponent {
 
     this.cartStore.addToCart(this.game.id);
   }
+
+  getAriaLabel(): string {
+    const status = this.getStatus();
+    const discount = this.game.discountPercent ? `, ${this.game.discountPercent}% discount` : '';
+
+    if (status === CartButtonStatus.Owned) {
+      return `${this.game.title}, $${this.game.price}${discount}, already owned`;
+    } else if (status === CartButtonStatus.InCart) {
+      return `${this.game.title}, $${this.game.price}${discount}, in cart`;
+    }
+    return `${this.game.title}, $${this.game.price}${discount}`;
+  }
 }
