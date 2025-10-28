@@ -15,6 +15,11 @@ import { Game } from '@app/models/game.model';
 import { GamesService } from '@app/services/games.service';
 import { CartService } from '../services/cart.service';
 
+/**
+ * Cart state shape
+ * - gameIds: Array of game IDs currently in the cart
+ * - isDropdownOpen: Controls cart dropdown visibility
+ */
 type CartState = {
   gameIds: number[];
   isDropdownOpen: boolean;
@@ -25,6 +30,18 @@ const initialState: CartState = {
   isDropdownOpen: false,
 };
 
+/**
+ * Global cart store using @ngrx/signals
+ *
+ * Manages shopping cart state with persistent storage via CartService.
+ * Provides reactive state management for cart operations and UI state.
+ *
+ * Features:
+ * - Persists cart data to localStorage
+ * - Syncs with games service to compute cart items
+ * - Manages dropdown UI state
+ * - Provides computed properties for cart totals and validations
+ */
 export const CartStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
@@ -37,6 +54,7 @@ export const CartStore = signalStore(
   withHooks((store) => {
     return {
       onInit() {
+        // Hydrate cart state from localStorage on initialization
         patchState(store, () => ({ gameIds: store.cartService.getIds() }));
       },
     };
@@ -81,8 +99,16 @@ export const CartStore = signalStore(
     };
   }),
   withComputed((store) => ({
+    /** Returns a function to check if a game ID is in the cart */
     isInCart: () => (id: number) => store.gameIds().includes(id),
+
+    /** Total number of games in cart */
     totalGames: () => store.gameIds().length,
+
+    /**
+     * Total cart value in dollars
+     * Sums up prices of all games currently in cart
+     */
     totalPrice: () => {
       const gameIds = store.gameIds();
       const games = store.gamesSignal();

@@ -65,7 +65,7 @@ describe('GamesService', () => {
 
   describe('error simulation with owned games', () => {
     it('should handle owned games fetch error', async () => {
-      jest.spyOn(Math, 'random').mockReturnValueOnce(0.25).mockReturnValueOnce(0.01); // Second call < ERROR_CHANCE_OWNED (0.05)
+      jest.spyOn(Math, 'random').mockReturnValueOnce(0.25).mockReturnValueOnce(0.01);
 
       const gamesPromise = new Promise<Game[]>((resolve) => {
         service.getGames().subscribe((games) => {
@@ -73,7 +73,6 @@ describe('GamesService', () => {
         });
       });
 
-      // Both error simulations happen immediately, so no HTTP requests should be made
       httpMock.expectNone('assets/data/games.json');
       httpMock.expectNone('assets/data/owned.json');
 

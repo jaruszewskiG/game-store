@@ -1,6 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, output } from '@angular/core';
 import { CartButtonStatus } from '@models/cart.model';
 
+/**
+ * Add-to-cart button with status indicators
+ *
+ * Displays different states: available (shows price), in cart, or owned.
+ * Includes accessibility labels and event output for parent handling.
+ */
 @Component({
   selector: 'app-cart-button',
   templateUrl: './cart-button.html',
@@ -14,7 +20,7 @@ export class CartButtonComponent {
 
   clicked = output<void>();
 
-  // Expose enum to template
+  /** Expose enum to template for status comparisons */
   readonly CartButtonStatus = CartButtonStatus;
 
   getAriaLabel(): string {

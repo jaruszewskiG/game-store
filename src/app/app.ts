@@ -3,6 +3,10 @@ import { HomeComponent } from '@views/home/home';
 import { MenuComponent } from '@features/layout/menu/menu';
 import { CartStore } from '@stores/cart.store';
 
+/**
+ * Root application component
+ * Main app shell with navigation menu and home page content
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
