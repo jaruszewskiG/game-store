@@ -3,6 +3,7 @@
 
 .cta-button {
   @include button-base;
+  @include focus-visible;
   background: linear-gradient(0deg, $color-primary 0%, $color-primary-light 100%);
   font-size: $font-size-base;
   line-height: 22px;

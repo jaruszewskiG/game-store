@@ -2,11 +2,9 @@
   class="cart-button"
   type="button"
   [disabled]="status === CartButtonStatus.Owned"
+  [attr.aria-label]="getAriaLabel()"
+  [attr.aria-disabled]="status === CartButtonStatus.Owned"
   (click)="clicked.emit()"
 >
-  @if (status === CartButtonStatus.Available) {
-    ${{ price }}
-  } @else {
-    {{ status }}
-  }
+  <span aria-hidden="true">{{ getStatusText() }}</span>
 </button>

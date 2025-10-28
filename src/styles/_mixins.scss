@@ -161,3 +161,22 @@
 @mixin aspect-ratio($width, $height) {
   aspect-ratio: #{$width} / #{$height};
 }
+
+// Focus styles for accessibility
+@mixin focus-visible {
+  &:focus-visible {
+    outline: 3px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@mixin focus-within {
+  &:focus-within {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}

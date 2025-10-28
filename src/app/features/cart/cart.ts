@@ -23,4 +23,10 @@ export class CartComponent {
       cartButton?.focus();
     }
   }
+
+  getAriaLabel(): string {
+    const count = this.cartStore.totalGames();
+    const price = this.cartStore.totalPrice();
+    return `Shopping cart with ${count} ${count === 1 ? 'item' : 'items'}, total $${price.toFixed(2)}`;
+  }
 }
