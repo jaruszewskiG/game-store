@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { CtaButtonComponent } from './cta-button';
 
 describe('CtaButtonComponent', () => {
