@@ -65,6 +65,38 @@ npm run build
 
 Build artifacts will be stored in the `dist/` directory.
 
+## 🚀 Deployment
+
+### GitHub Pages (Automated)
+
+The project is configured to automatically deploy to GitHub Pages when you push to the `master` branch.
+
+**Setup (one-time):**
+
+1. Go to your repository Settings → Pages
+2. Under "Build and deployment" → Source: select **GitHub Actions**
+3. Push to `master` branch to trigger automatic deployment
+
+The workflow will:
+
+- Install dependencies
+- Run the production build with correct base href
+- Deploy to GitHub Pages
+
+**Manual deployment trigger:**
+
+You can also manually trigger deployment from the Actions tab in your GitHub repository.
+
+### Build for GitHub Pages
+
+To build locally for GitHub Pages:
+
+```bash
+npm run build:gh-pages
+```
+
+This creates a production build with the correct base href (`/game-store/`) for GitHub Pages hosting.
+
 ## 🧪 Testing
 
 ### Run All Tests
