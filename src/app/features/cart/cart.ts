@@ -17,7 +17,10 @@ export class CartComponent {
   @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.cartStore.isDropdownOpen()) {
-      this.cartStore.toggleDropdown();
+      this.cartStore.closeDropdown();
+      // Return focus to cart button
+      const cartButton = document.querySelector('.cart__button') as HTMLButtonElement;
+      cartButton?.focus();
     }
   }
 }

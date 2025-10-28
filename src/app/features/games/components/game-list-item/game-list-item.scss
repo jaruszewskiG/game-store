@@ -17,6 +17,13 @@
       height: auto;
       display: block;
     }
+
+    .image-skeleton {
+      width: 100%;
+      height: 110px;
+      background-color: $color-bg-gray;
+      display: block;
+    }
   }
 
   .details {
@@ -62,6 +69,11 @@
       max-width: 100%;
       max-height: none;
       @include aspect-ratio(16, 9);
+
+      .image-skeleton {
+        height: 0;
+        padding-bottom: 56.25%; // 16:9 aspect ratio
+      }
     }
 
     .details {
@@ -79,4 +91,25 @@
       }
     }
   }
+}
+
+// Shimmer animation for skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    $color-bg-gray 0px,
+    rgba(255, 255, 255, 0.3) 40px,
+    $color-bg-gray 80px
+  );
+  background-size: 200px 100%;
 }

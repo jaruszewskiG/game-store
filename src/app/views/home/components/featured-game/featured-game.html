@@ -1,9 +1,18 @@
-<div class="featured-game">
-  <h1 class="heading">GAME OF THE WEEK</h1>
-  <div class="featured-game__image-container">
-    <img src="assets/witcher-adventure-game.png" alt="Witcher Adventure Game Cover" />
-    <button class="featured-game__secret-button" (click)="onSecretButtonClick()">
-      A secret button that you should totally implement
-    </button>
+@if (featuredGame(); as game) {
+  <div class="featured-game">
+    <h1 class="heading">GAME OF THE WEEK</h1>
+    <div class="featured-game__image-container">
+      <img [src]="game.imageUrl" [alt]="game.title + ' Cover'" />
+      <button class="featured-game__secret-button" (click)="onSecretButtonClick()">
+        A secret button that you should totally implement
+      </button>
+    </div>
   </div>
-</div>
+} @else {
+  <div class="featured-game featured-game--loading">
+    <h1 class="heading">GAME OF THE WEEK</h1>
+    <div class="featured-game__image-container">
+      <div class="featured-game__skeleton skeleton-shimmer"></div>
+    </div>
+  </div>
+}

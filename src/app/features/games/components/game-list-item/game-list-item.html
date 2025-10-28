@@ -1,6 +1,10 @@
 <div class="game-list-item">
   <div class="image">
-    <img [src]="game.imageUrl" [alt]="game.title" />
+    @defer (on viewport) {
+      <img [src]="game.imageUrl" [alt]="game.title" loading="lazy" />
+    } @placeholder (minimum 300ms) {
+      <div class="image-skeleton skeleton-shimmer"></div>
+    }
   </div>
 
   <div class="details">

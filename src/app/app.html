@@ -1,11 +1,13 @@
 <div class="app">
   <app-menu></app-menu>
-  <div class="app__content">
+  <main class="app__content">
     <div
       class="app__backdrop"
+      role="presentation"
       [class.app__backdrop--visible]="cartStore.isDropdownOpen()"
-      (click)="cartStore.toggleDropdown()"
+      [attr.aria-hidden]="!cartStore.isDropdownOpen()"
+      (click)="cartStore.closeDropdown()"
     ></div>
     <app-home></app-home>
-  </div>
+  </main>
 </div>
