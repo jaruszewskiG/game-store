@@ -68,7 +68,8 @@
     height: $menu-height-mobile;
     position: sticky;
     top: 0;
-    z-index: $z-index-menu;
+    /* Ensure the sticky menu and its dropdowns sit above the global backdrop on mobile */
+    z-index: $z-index-dropdown;
 
     &__content {
       padding: 0 $spacing-sm;

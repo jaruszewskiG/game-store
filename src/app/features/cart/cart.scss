@@ -112,6 +112,19 @@
         }
       }
     }
+
+    &__list {
+      /* Make only the list scrollable when dropdown doesn't fit on screen */
+      box-sizing: border-box;
+      padding: 0; /* removed extra horizontal/vertical padding to avoid unwanted spacing */
+      max-height: calc(100vh - #{$menu-height} - 120px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+
+      @include respond-to(sm) {
+        max-height: calc(100vh - #{$menu-height-mobile} - 100px);
+      }
+    }
   }
 
   &.cart--is-open {

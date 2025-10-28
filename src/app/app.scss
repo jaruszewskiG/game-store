@@ -12,7 +12,7 @@
     @include fixed-overlay;
     top: $menu-height;
     background-color: $color-backdrop;
-    z-index: $z-index-backdrop;
+    z-index: 900;
     opacity: 0;
     pointer-events: none;
     transition: opacity $transition-base;

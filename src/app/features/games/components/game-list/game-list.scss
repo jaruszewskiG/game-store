@@ -4,8 +4,8 @@
 .game-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: stretch;
   width: 100%;
   gap: $spacing-xl;
   box-sizing: border-box;
@@ -17,31 +17,16 @@
   }
 
   & > *:not(.game-list__error) {
-    flex: 0 1 calc(20% - 13px);
+    flex: 0 0 calc((100% - 4 * #{$spacing-xl}) / 5);
     min-width: 0;
-    max-width: $game-item-width;
     box-sizing: border-box;
   }
 
-  @include respond-to(lg) {
-    gap: 14px;
-
-    & > *:not(.game-list__error) {
-      flex: 0 1 calc(25% - 11px);
-    }
-  }
-
-  @include respond-to(md) {
+  @media (max-width: 800px) {
     gap: $spacing-lg;
-    justify-content: flex-start;
-
-    &--error {
-      justify-content: center;
-    }
 
     & > *:not(.game-list__error) {
-      flex: 0 1 calc(33.333% - #{$spacing-md});
-      max-width: 240px;
+      flex: 0 0 calc((100% - 2 * #{$spacing-lg}) / 3);
     }
   }
 
@@ -49,14 +34,13 @@
     gap: 10px;
 
     & > *:not(.game-list__error) {
-      flex: 0 1 calc(50% - 5px);
-      max-width: none;
+      flex: 0 0 calc((100% - 10px) / 2);
     }
   }
 
-  @include respond-to(xs) {
+  @media (max-width: 320px) {
     & > *:not(.game-list__error) {
-      flex: 0 1 100%;
+      flex: 0 0 100%;
     }
   }
 }

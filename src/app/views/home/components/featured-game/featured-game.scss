@@ -2,8 +2,6 @@
 @use 'styles/mixins' as *;
 
 .featured-game {
-  margin-top: $spacing-4xl;
-
   .heading {
     @include text-bold;
     font-size: $font-size-md;
