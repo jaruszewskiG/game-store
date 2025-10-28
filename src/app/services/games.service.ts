@@ -1,17 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game, GameBase } from '@app/models/game.model';
-import {
-  catchError,
-  defer,
-  forkJoin,
-  map,
-  Observable,
-  of,
-  shareReplay,
-  switchMap,
-  timer,
-} from 'rxjs';
+import { catchError, defer, forkJoin, map, Observable, of, shareReplay, switchMap, timer } from 'rxjs';
 
 const GAMES_URL = 'assets/data/games.json';
 const OWNED_URL = 'assets/data/owned.json';
