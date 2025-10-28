@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
+import { Game, GameBase } from '@app/models/game.model';
 import { GamesService } from './games.service';
-import { GameBase, Game } from '@app/models/game.model';
 
 describe('GamesService', () => {
   let service: GamesService;

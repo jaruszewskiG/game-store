@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { GameListComponent } from './game-list';
-import { GamesService } from '@services/games.service';
+
 import { Game } from '@app/models/game.model';
+import { GamesService } from '@services/games.service';
+import { GameListComponent } from './game-list';
 
 describe('GameListComponent', () => {
   let component: GameListComponent;

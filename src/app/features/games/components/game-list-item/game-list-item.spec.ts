@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { GameListItemComponent } from './game-list-item';
+
 import { Game } from '@models/game.model';
+import { GameListItemComponent } from './game-list-item';
 
 describe('GameListItemComponent', () => {
   let component: GameListItemComponent;

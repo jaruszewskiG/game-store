@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { App } from './app';
+
 import { CartStore } from '@stores/cart.store';
+import { App } from './app';
 
 describe('App', () => {
   let component: App;

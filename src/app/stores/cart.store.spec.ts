@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
+
 import { of } from 'rxjs';
-import { CartStore } from './cart.store';
-import { CartService } from '../services/cart.service';
-import { GamesService } from '@app/services/games.service';
+
 import { Game } from '@app/models/game.model';
+import { CartService } from '@app/services/cart.service';
+import { GamesService } from '@app/services/games.service';
+import { CartStore } from './cart.store';
 
 describe('CartStore', () => {
   let store: InstanceType<typeof CartStore>;

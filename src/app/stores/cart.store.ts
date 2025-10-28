@@ -12,8 +12,8 @@ import {
 } from '@ngrx/signals';
 
 import { Game } from '@app/models/game.model';
+import { CartService } from '@app/services/cart.service';
 import { GamesService } from '@app/services/games.service';
-import { CartService } from '../services/cart.service';
 
 /**
  * Cart state shape
