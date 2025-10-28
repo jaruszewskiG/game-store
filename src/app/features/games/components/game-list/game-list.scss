@@ -16,7 +16,7 @@
     min-height: 40vh;
   }
 
-  & > * {
+  & > *:not(.game-list__error) {
     flex: 0 1 calc(20% - 13px);
     min-width: 0;
     max-width: $game-item-width;
@@ -26,7 +26,7 @@
   @include respond-to(lg) {
     gap: 14px;
 
-    & > * {
+    & > *:not(.game-list__error) {
       flex: 0 1 calc(25% - 11px);
     }
   }
@@ -39,7 +39,7 @@
       justify-content: center;
     }
 
-    & > * {
+    & > *:not(.game-list__error) {
       flex: 0 1 calc(33.333% - #{$spacing-md});
       max-width: 240px;
     }
@@ -48,14 +48,14 @@
   @include respond-to(sm) {
     gap: 10px;
 
-    & > * {
+    & > *:not(.game-list__error) {
       flex: 0 1 calc(50% - 5px);
       max-width: none;
     }
   }
 
   @include respond-to(xs) {
-    & > * {
+    & > *:not(.game-list__error) {
       flex: 0 1 100%;
     }
   }
@@ -63,8 +63,8 @@
 
 // Error state
 .game-list__error {
+  flex: 1 0 100%;
   width: 100%;
-  max-width: 600px;
   padding: $spacing-4xl $spacing-2xl;
   text-align: center;
   color: $color-text;
@@ -115,6 +115,10 @@
 
 // Skeleton loading styles
 .game-list-item--skeleton {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
   .image {
     width: 100%;
     height: 110px;
