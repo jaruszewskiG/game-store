@@ -10,7 +10,7 @@
 
   &__backdrop {
     @include fixed-overlay;
-    top: $menu-height;
+    top: 0;
     background-color: $color-backdrop;
     z-index: 900;
     opacity: 0;
@@ -25,7 +25,7 @@
 
   @include respond-to(sm) {
     &__backdrop {
-      top: $menu-height-mobile;
+      top: 0;
     }
   }
 }
