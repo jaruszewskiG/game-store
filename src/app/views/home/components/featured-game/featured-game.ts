@@ -1,0 +1,31 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { GamesService } from '@services/games.service';
+
+/**
+ * Featured game banner component
+ *
+ * Displays a highlighted game with promotional content.
+ * Gracefully handles image loading errors.
+ */
+@Component({
+  selector: 'app-featured-game',
+  templateUrl: './featured-game.html',
+  styleUrl: './featured-game.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FeaturedGameComponent {
+  private readonly gamesService = inject(GamesService);
+
+  readonly featuredGame = toSignal(this.gamesService.getFeaturedGame());
+
+  onSecretButtonClick(): void {
+    alert('I have totally implemented the secret button ;)');
+  }
+
+  /** Updates alt text when featured image fails to load */
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.alt = 'Featured game image failed to load';
+  }
+}

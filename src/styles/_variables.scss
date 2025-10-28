@@ -1,0 +1,82 @@
+// Colors
+$color-primary: rgba(122, 61, 198, 1);
+$color-primary-light: rgba(182, 90, 226, 1);
+$color-primary-hover: rgba(139, 77, 215, 1);
+$color-primary-hover-light: rgba(199, 107, 243, 1);
+$color-success: rgba(0, 144, 94, 1);
+$color-border: rgba(184, 184, 184, 1);
+$color-border-dark: rgba(151, 151, 151, 0.8);
+$color-text: rgba(64, 64, 64, 1);
+$color-white: rgba(255, 255, 255, 1);
+$color-bg-gray: rgba(222, 222, 222, 1);
+$color-bg-hover: rgba(151, 151, 151, 0.1);
+$color-bg-active: rgba(151, 151, 151, 0.2);
+$color-bg-disabled: rgba(200, 200, 200, 0.3);
+$color-shadow: rgba(198, 198, 198, 0.5);
+$color-backdrop: rgba(0, 0, 0, 0.15);
+$color-shadow-dark: rgba(0, 0, 0, 0.1);
+
+// Background gradients
+$color-bg-gradient-start: rgba(108, 54, 173, 0.1);
+$color-bg-gradient-end: rgba(194, 194, 194, 0.5);
+
+// Spacing
+$spacing-xs: 2px;
+$spacing-sm: 4px;
+$spacing-md: 8px;
+$spacing-lg: 12px;
+$spacing-xl: 16px;
+$spacing-2xl: 20px;
+$spacing-3xl: 24px;
+$spacing-4xl: 28px;
+
+// Typography
+$font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 14px;
+$font-size-md: 15px;
+$font-size-lg: 16px;
+
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.2;
+$line-height-base: 1.4;
+$line-height-relaxed: 1.5;
+
+// Layout
+$menu-height: 59px;
+$menu-height-mobile: 50px;
+$max-content-width: 1060px;
+$game-item-width: 196px;
+
+// Borders & Shadows
+$border-radius-sm: 2px;
+$border-width: 1px;
+$box-shadow-sm: 0 1px 1px 0 $color-shadow;
+$box-shadow-md: 0 4px 8px $color-shadow-dark;
+$box-shadow-button: 0 4px 8px rgba(122, 61, 198, 0.3);
+$box-shadow-button-active: 0 2px 4px rgba(122, 61, 198, 0.2);
+
+// Transitions
+$transition-fast: 100ms ease-in-out;
+$transition-base: 160ms ease-out;
+$transition-slow: 200ms ease-in-out;
+
+// Z-index
+$z-index-dropdown: 1100;
+$z-index-overlay: 999;
+$z-index-backdrop: 998;
+$z-index-menu: 100;
+
+// Breakpoints
+$breakpoint-xs: 375px;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1060px;
+$breakpoint-xl: 1080px;
+
+// Touch targets (WCAG AA)
+$touch-target-min: 44px;

@@ -18,12 +18,16 @@
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["app/*"],
-      "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
       "@features/*": ["app/features/*"],
-      "@utils/*": ["app/utils/*"]
+      "@views/*": ["app/views/*"],
+      "@services/*": ["app/services/*"],
+      "@models/*": ["app/models/*"],
+      "@stores/*": ["app/stores/*"],
+      "@styles/*": ["styles/*"]
     },
-    "sourceMap": true
+    "sourceMap": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

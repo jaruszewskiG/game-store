@@ -1,0 +1,153 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.cart {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__button {
+    @include flex-center;
+    @include button-base;
+    @include focus-visible;
+    background-color: $color-white;
+    width: 100%;
+    height: 100%;
+    padding: 0 14px 0 $spacing-xl;
+  }
+
+  &__icon {
+    width: $spacing-xl;
+    height: $spacing-xl;
+  }
+
+  &__games-count {
+    margin-left: $spacing-xs;
+    @include text-semibold;
+  }
+
+  .cart-dropdown {
+    position: absolute;
+    top: 100%;
+    right: -1px;
+    width: 370px;
+    background-color: $color-white;
+    border-right: $border-width solid $color-border;
+    border-left: $border-width solid $color-border;
+    border-bottom: $border-width solid $color-border;
+    border-top: none;
+    @include dropdown-shadow;
+    z-index: $z-index-dropdown;
+    transform-origin: top right;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+      opacity $transition-base,
+      transform $transition-base;
+
+    &__header {
+      @include flex-between;
+      flex-wrap: wrap;
+      margin: $spacing-lg 10px;
+      gap: $spacing-md;
+    }
+
+    &__item-count,
+    &__total-price {
+      @include text-bold;
+      font-size: $font-size-md;
+      line-height: 18px;
+    }
+
+    &__item-count {
+      flex-shrink: 0;
+    }
+
+    &__total-price {
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    app-cta-button {
+      margin-left: $spacing-md;
+    }
+
+    @include respond-to(md) {
+      width: 340px;
+
+      &__header {
+        margin: $spacing-lg $spacing-md;
+      }
+    }
+
+    @include respond-to(sm) {
+      width: 212px;
+      max-width: calc(100vw - $spacing-3xl);
+      right: -1px;
+      left: auto;
+
+      &__header {
+        gap: $spacing-md;
+        margin: 10px $spacing-md;
+      }
+
+      &__item-count,
+      &__total-price {
+        font-size: $font-size-base;
+        line-height: 18px;
+      }
+
+      &__total-price {
+        margin-left: 0;
+      }
+
+      app-cta-button {
+        flex-basis: 100%;
+        margin-left: 0;
+
+        ::ng-deep .cta-button {
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    &__list {
+      /* Make only the list scrollable when dropdown doesn't fit on screen */
+      box-sizing: border-box;
+      padding: 0; /* removed extra horizontal/vertical padding to avoid unwanted spacing */
+      max-height: calc(100vh - #{$menu-height} - 120px);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+
+      @include respond-to(sm) {
+        max-height: calc(100vh - #{$menu-height-mobile} - 100px);
+      }
+    }
+  }
+
+  &.cart--is-open {
+    .cart-dropdown {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  @include respond-to(sm) {
+    &__button {
+      padding: 0 $spacing-lg 0 14px;
+    }
+
+    &__icon {
+      width: 15px;
+      height: 15px;
+    }
+
+    &__games-count {
+      font-size: $font-size-sm;
+      line-height: $spacing-xl;
+    }
+  }
+}

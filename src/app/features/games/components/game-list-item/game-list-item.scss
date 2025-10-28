@@ -1,0 +1,116 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.game-list-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .image {
+    width: 100%;
+    max-height: 110px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-skeleton {
+      width: 100%;
+      height: 110px;
+      background-color: $color-bg-gray;
+      display: block;
+    }
+  }
+
+  .details {
+    width: 100%;
+    flex: 1;
+    min-height: 76px;
+    background-color: $color-white;
+    padding: 10.5px 6px 7px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+    }
+
+    &__title {
+      @include text-semibold;
+      line-height: 17px;
+      text-transform: uppercase;
+      @include text-clamp(2);
+      margin-bottom: 4px;
+    }
+  }
+
+  @include respond-to(md) {
+    .details {
+      padding: 10px $spacing-md $spacing-md 10px;
+
+      &__title {
+        font-size: $font-size-md;
+        line-height: 19px;
+      }
+    }
+  }
+
+  @include respond-to(sm) {
+    .image {
+      max-width: 100%;
+      max-height: none;
+      @include aspect-ratio(16, 9);
+
+      .image-skeleton {
+        height: 0;
+        padding-bottom: 56.25%; // 16:9 aspect ratio
+      }
+    }
+
+    .details {
+      padding: 10px $spacing-md $spacing-md 10px;
+      min-height: 74px;
+      height: auto;
+
+      &__title {
+        font-size: $font-size-base;
+        line-height: 18px;
+      }
+
+      &__footer {
+        gap: 6px;
+      }
+    }
+  }
+}
+
+// Shimmer animation for skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    $color-bg-gray 0px,
+    rgba(255, 255, 255, 0.3) 40px,
+    $color-bg-gray 80px
+  );
+  background-size: 200px 100%;
+}

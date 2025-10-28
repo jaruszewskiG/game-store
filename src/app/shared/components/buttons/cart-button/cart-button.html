@@ -1,0 +1,10 @@
+<button
+  class="cart-button"
+  type="button"
+  [disabled]="status === CartButtonStatus.Owned"
+  [attr.aria-label]="getAriaLabel()"
+  [attr.aria-disabled]="status === CartButtonStatus.Owned"
+  (click)="clicked.emit()"
+>
+  <span aria-hidden="true">{{ getStatusText() }}</span>
+</button>

@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Run tests
+npm test
+
+# Run lint-staged (formatting)
 npx --no-install lint-staged

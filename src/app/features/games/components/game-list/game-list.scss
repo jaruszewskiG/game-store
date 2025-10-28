@@ -1,0 +1,189 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.game-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  gap: $spacing-xl;
+  box-sizing: border-box;
+
+  &--error {
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+  }
+
+  & > *:not(.game-list__error) {
+    flex: 0 0 calc((100% - 4 * #{$spacing-xl}) / 5);
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 800px) {
+    gap: $spacing-lg;
+
+    & > *:not(.game-list__error) {
+      flex: 0 0 calc((100% - 2 * #{$spacing-lg}) / 3);
+    }
+  }
+
+  @include respond-to(sm) {
+    gap: 10px;
+
+    & > *:not(.game-list__error) {
+      flex: 0 0 calc((100% - 10px) / 2);
+    }
+  }
+
+  @media (max-width: 320px) {
+    & > *:not(.game-list__error) {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+// Error state
+.game-list__error {
+  flex: 1 0 100%;
+  width: 100%;
+  padding: $spacing-4xl $spacing-2xl;
+  text-align: center;
+  color: $color-text;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+
+  .error-icon {
+    font-size: 64px;
+    line-height: 1;
+    animation: flicker 2s infinite;
+  }
+
+  h2 {
+    @include text-bold;
+    font-size: 32px; // Large size for error heading
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d32f2f; // Red error color
+    margin: 0;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    @include text-semibold;
+    margin: 0;
+  }
+
+  .error-subtitle {
+    font-size: $font-size-base;
+    @include text-base;
+    color: $color-text;
+    opacity: 0.7;
+    font-style: italic;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+// Skeleton loading styles
+.game-list-item--skeleton {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  .image {
+    width: 100%;
+    height: 110px;
+    background-color: $color-bg-gray;
+    border-radius: 0;
+
+    @include respond-to(sm) {
+      height: 0;
+      padding-bottom: 56.25%; // 16:9 aspect ratio
+    }
+  }
+
+  .details {
+    width: 100%;
+    height: 76px;
+    background-color: $color-white;
+    padding: 10.5px 6px 7px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &__title {
+      height: 17px;
+      width: 80%;
+      background-color: $color-bg-gray;
+      border-radius: $border-radius-sm;
+    }
+
+    &__footer {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    @include respond-to(md) {
+      height: auto;
+      min-height: 76px;
+      padding: 10px $spacing-md $spacing-md 10px;
+    }
+
+    @include respond-to(sm) {
+      padding: 10px $spacing-md $spacing-md 10px;
+      min-height: 74px;
+      height: auto;
+    }
+  }
+
+  .skeleton-tag {
+    width: 45px;
+    height: 22px;
+    background-color: $color-bg-gray;
+    border-radius: $border-radius-sm;
+  }
+
+  .skeleton-button {
+    width: 60px;
+    height: 28px;
+    background-color: $color-bg-gray;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// Shimmer animation for skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    $color-bg-gray 0px,
+    rgba(255, 255, 255, 0.3) 40px,
+    $color-bg-gray 80px
+  );
+  background-size: 200px 100%;
+}

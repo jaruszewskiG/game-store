@@ -1,0 +1,151 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.cart-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0; /* items span full width of dropdown; spacing handled by padding */
+  border-top: 1px solid rgba(220, 220, 220, 1);
+  padding: 5px 10px; /* equal 5px space between content and divider lines, 10px horizontal padding */
+  box-sizing: border-box;
+
+  .image {
+    max-width: 100px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  .details {
+    margin: 0 0 0 9px;
+    max-width: 190px;
+    max-height: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
+
+    &__title {
+      @include text-ellipsis;
+      @include text-semibold;
+      max-width: 100%;
+      line-height: 18px;
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+    }
+
+    &__price {
+      display: none;
+      @include text-semibold;
+      font-size: $font-size-sm;
+      line-height: $spacing-xl;
+    }
+
+    &__remove-button {
+      @include button-reset;
+      @include focus-visible;
+      font-weight: $font-weight-regular;
+      font-size: $font-size-xs;
+      line-height: $spacing-xl;
+      text-decoration: underline;
+      @include show-on-hover;
+    }
+  }
+
+  .price {
+    flex: 0 0 auto;
+    margin-left: auto;
+
+    & > * {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
+      @include text-semibold;
+      font-size: $font-size-sm;
+      line-height: $spacing-xl;
+      white-space: nowrap;
+    }
+  }
+
+  &:hover {
+    .details__remove-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  // Show remove button on touch devices (no hover capability)
+  @media (hover: none) {
+    .details__remove-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @include respond-to(sm) {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+
+    .image {
+      max-width: 100%;
+      width: auto;
+      align-self: flex-start;
+
+      img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+    }
+
+    .details {
+      margin: $spacing-md 0 0 0;
+      max-width: 100%;
+      max-height: none;
+      gap: $spacing-md;
+
+      &__title {
+        font-size: $font-size-base;
+        line-height: 18px;
+        max-width: 100%;
+        white-space: normal;
+        @include text-clamp(2);
+      }
+
+      &__footer {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &__price {
+        display: block;
+        font-size: $font-size-base;
+        line-height: 18px;
+        order: 1;
+      }
+
+      &__remove-button {
+        font-size: $font-size-xs;
+        line-height: $spacing-xl;
+        order: 2;
+      }
+    }
+
+    & > .price {
+      display: none;
+    }
+  }
+}

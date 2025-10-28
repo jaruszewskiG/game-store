@@ -1,0 +1,31 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.app {
+  position: relative;
+
+  &__content {
+    position: relative;
+  }
+
+  &__backdrop {
+    @include fixed-overlay;
+    top: $menu-height;
+    background-color: $color-backdrop;
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-base;
+
+    &--visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @include respond-to(sm) {
+    &__backdrop {
+      top: $menu-height-mobile;
+    }
+  }
+}

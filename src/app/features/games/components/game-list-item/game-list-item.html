@@ -1,0 +1,31 @@
+<article class="game-list-item" [attr.aria-label]="getAriaLabel()">
+  <div class="image">
+    @defer (on viewport) {
+      <img [src]="game.imageUrl" [alt]="game.title" loading="lazy" />
+    } @placeholder (minimum 300ms) {
+      <div class="image-skeleton skeleton-shimmer"></div>
+    }
+  </div>
+
+  <div class="details">
+    <h3 class="details__title" [attr.id]="'game-title-' + game.id">
+      {{ game.title }}
+    </h3>
+
+    <div class="details__footer" role="group" [attr.aria-labelledby]="'game-title-' + game.id">
+      @if (game.discountPercent) {
+        <app-discount-tag
+          [discountPercent]="game.discountPercent"
+          [attr.aria-label]="game.discountPercent + '% discount'"
+        ></app-discount-tag>
+      }
+
+      <app-cart-button
+        [price]="game.price"
+        [status]="getStatus()"
+        [gameTitle]="game.title"
+        (clicked)="addToCart()"
+      ></app-cart-button>
+    </div>
+  </div>
+</article>

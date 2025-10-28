@@ -1,1 +1,13 @@
-<app-menu></app-menu> <app-home-page></app-home-page>
+<div class="app">
+  <app-menu></app-menu>
+  <main class="app__content">
+    <div
+      class="app__backdrop"
+      role="presentation"
+      [class.app__backdrop--visible]="cartStore.isDropdownOpen()"
+      [attr.aria-hidden]="!cartStore.isDropdownOpen()"
+      (click)="cartStore.closeDropdown()"
+    ></div>
+    <app-home></app-home>
+  </main>
+</div>

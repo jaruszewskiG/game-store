@@ -1,19 +1,19 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit } from '@angular/core';
-import { HomePageComponent } from './views/home-page/home-page';
-import { MenuComponent } from './components/menu/menu';
-import { CartStore } from './stores/cart.store';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { HomeComponent } from '@views/home/home';
+import { MenuComponent } from '@features/layout/menu/menu';
+import { CartStore } from '@stores/cart.store';
 
+/**
+ * Root application component
+ * Main app shell with navigation menu and home page content
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  imports: [MenuComponent, HomePageComponent],
+  imports: [MenuComponent, HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class App implements OnInit {
-  private readonly cartStore = inject(CartStore);
-
-  ngOnInit() {
-    setInterval(() => console.log(this.cartStore.gameIds()), 1000);
-  }
+export class App {
+  readonly cartStore = inject(CartStore);
 }

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "ODDWORLD: STRANGER'S WRATH",
+    "price": 9.99,
+    "discountPercent": 50,
+    "imageUrl": "assets/game-thumbnails/oddworld.png"
+  },
+  {
+    "id": 2,
+    "title": "CHAOS ON DEPONIA",
+    "price": 6.99,
+    "imageUrl": "assets/game-thumbnails/deponia.png"
+  },
+  {
+    "id": 3,
+    "title": "THE SETTLERS 2: GOLD EDITION",
+    "price": 5.99,
+    "imageUrl": "assets/game-thumbnails/settlers2.png"
+  },
+  {
+    "id": 4,
+    "title": "NEVERWINTER NIGHTS",
+    "price": 9.99,
+    "discountPercent": 50,
+    "imageUrl": "assets/game-thumbnails/nwn.png"
+  },
+  {
+    "id": 5,
+    "title": "ASSASSIN'S CREED: DIRECTOR'S CUT",
+    "price": 9.99,
+    "imageUrl": "assets/game-thumbnails/assassinscreed.png"
+  }
+]

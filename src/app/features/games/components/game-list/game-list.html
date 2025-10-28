@@ -1,0 +1,35 @@
+<section
+  class="game-list"
+  [class.game-list--error]="games()?.length === 0"
+  role="list"
+  aria-label="Available games"
+>
+  @if (games() === undefined) {
+    <!-- Initial loading state: Show skeleton placeholders while data loads -->
+    @for (i of [1, 2, 3, 4, 5]; track i) {
+      <div class="game-list-item game-list-item--skeleton" role="listitem">
+        <div class="image skeleton-shimmer"></div>
+        <div class="details">
+          <div class="details__title skeleton-shimmer"></div>
+          <div class="details__footer">
+            <div class="skeleton-tag skeleton-shimmer"></div>
+            <div class="skeleton-button skeleton-shimmer"></div>
+          </div>
+        </div>
+      </div>
+    }
+  } @else if (games()!.length === 0) {
+    <!-- Error state: Failed to load games -->
+    <div class="game-list__error">
+      <div class="error-icon">💀</div>
+      <h2>GAME OVER</h2>
+      <p>Failed to connect to the game server.</p>
+      <p class="error-subtitle">Press F5 to respawn and try again.</p>
+    </div>
+  } @else {
+    <!-- Data loaded: Show items immediately -->
+    @for (game of games()!; track game.id) {
+      <app-game-list-item [game]="game" role="listitem"></app-game-list-item>
+    }
+  }
+</section>

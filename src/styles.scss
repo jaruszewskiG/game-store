@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
 *,
 *::before,
 *::after {
@@ -9,10 +12,39 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(108, 54, 173, 0.1) 0%, rgba(194, 194, 194, 0.5) 100%);
+  background: linear-gradient(180deg, $color-bg-gradient-start 0%, $color-bg-gradient-end 100%);
 }
 
 * {
-  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
-  line-height: 1.5;
+  font-family: $font-family;
+  line-height: $line-height-relaxed;
+}
+
+// Screen reader only content
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Skip to main content link
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $color-primary;
+  color: $color-white;
+  padding: $spacing-md $spacing-xl;
+  text-decoration: none;
+  z-index: 100;
+
+  &:focus {
+    top: 0;
+  }
 }

@@ -1,0 +1,8 @@
+<button
+  class="cta-button"
+  type="button"
+  [attr.aria-label]="getAriaLabel()"
+  (click)="clicked.emit(); $event.stopPropagation()"
+>
+  {{ label }}
+</button>

@@ -1,0 +1,32 @@
+@if (game(); as game) {
+  <article
+    class="cart-list-item"
+    role="listitem"
+    [attr.aria-label]="game.title + ', $' + game.price"
+  >
+    <div class="image">
+      <img [src]="game.imageUrl" [alt]="game.title + ' cover art'" role="img" />
+    </div>
+
+    <div class="details">
+      <h3 class="details__title">{{ game.title }}</h3>
+      <div class="details__footer">
+        <span class="details__price" [attr.aria-label]="'Price: $' + game.price">
+          ${{ game.price }}
+        </span>
+        <button
+          class="details__remove-button"
+          type="button"
+          [attr.aria-label]="'Remove ' + game.title + ' from cart'"
+          (click)="cartStore.removeFromCart(game.id)"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <div class="price" aria-hidden="true">
+      <span>${{ game.price }}</span>
+    </div>
+  </article>
+}

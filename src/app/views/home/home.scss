@@ -1,0 +1,36 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.home {
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-4xl $spacing-2xl 50px $spacing-2xl;
+  box-sizing: border-box;
+
+  .featured-game {
+    width: 100%;
+    max-width: $max-content-width;
+    margin-bottom: 19px;
+  }
+
+  .game-list-section {
+    width: 100%;
+    max-width: $max-content-width;
+  }
+
+  @include respond-to(md) {
+    padding: $spacing-xl $spacing-xl 50px $spacing-xl;
+
+    .featured-game {
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  @include respond-to(sm) {
+    padding: $spacing-sm $spacing-sm 50px $spacing-sm;
+
+    .featured-game {
+      margin-bottom: $spacing-lg;
+    }
+  }
+}

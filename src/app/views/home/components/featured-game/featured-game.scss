@@ -1,0 +1,149 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.featured-game {
+  .heading {
+    @include text-bold;
+    font-size: $font-size-md;
+    line-height: $spacing-2xl;
+    vertical-align: bottom;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__secret-button {
+    @include absolute-center;
+    @include button-base;
+    @include focus-visible;
+    padding: $spacing-3xl $spacing-2xl;
+    @include text-semibold;
+    line-height: $spacing-2xl;
+    opacity: 0;
+  }
+
+  @include respond-to(md) {
+    margin-top: $spacing-2xl;
+
+    .heading {
+      margin-bottom: $spacing-xl;
+      font-size: $font-size-lg;
+      line-height: 22px;
+    }
+
+    &__image-container {
+      min-height: 30vh;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      min-height: 30vh;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &__secret-button {
+      padding: 18px $spacing-xl;
+      font-size: $font-size-base;
+      line-height: $spacing-2xl;
+    }
+  }
+
+  @include respond-to(sm) {
+    margin-top: $spacing-xl;
+
+    .heading {
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-md;
+      line-height: $spacing-2xl;
+    }
+
+    &__image-container {
+      min-height: 22vh;
+    }
+
+    img {
+      min-height: 22vh;
+    }
+
+    &__secret-button {
+      padding: 14px $spacing-lg;
+      font-size: $font-size-sm;
+      line-height: 18px;
+    }
+  }
+
+  @include respond-to(xs) {
+    &__image-container {
+      min-height: 18vh;
+    }
+
+    img {
+      min-height: 18vh;
+    }
+
+    &__secret-button {
+      font-size: $font-size-xs;
+      line-height: $spacing-xl;
+      padding: $spacing-lg 10px;
+    }
+  }
+
+  &__skeleton {
+    width: 100%;
+    height: 360px; // Matches typical featured game banner height
+    background-color: $color-bg-gray;
+    display: block;
+
+    @include respond-to(md) {
+      width: 100%;
+      height: 100%;
+      min-height: 30vh;
+    }
+
+    @include respond-to(sm) {
+      width: 100%;
+      height: 100%;
+      min-height: 22vh;
+    }
+
+    @include respond-to(xs) {
+      width: 100%;
+      height: 100%;
+      min-height: 18vh;
+    }
+  }
+}
+
+// Shimmer animation for skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    $color-bg-gray 0px,
+    rgba(255, 255, 255, 0.3) 40px,
+    $color-bg-gray 80px
+  );
+  background-size: 200px 100%;
+}
