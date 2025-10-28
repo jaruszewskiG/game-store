@@ -4,7 +4,7 @@
 .home {
   @include flex-center;
   flex-direction: column;
-  padding: $spacing-2xl $spacing-2xl 50px $spacing-2xl;
+  padding: $spacing-4xl $spacing-2xl 50px $spacing-2xl;
   box-sizing: border-box;
 
   .featured-game {

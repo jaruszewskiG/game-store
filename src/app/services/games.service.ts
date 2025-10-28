@@ -65,7 +65,7 @@ export class GamesService {
         return of([]);
       }),
     ),
-  );
+  ).pipe(shareReplay(1));
 
   getGameById(id: number): Observable<Game | undefined> {
     return this.games$.pipe(map((games) => games.find((game) => game.id === id)));
@@ -104,6 +104,7 @@ export class GamesService {
    * Includes random error simulation for testing
    */
   private getOwnedGameIds(): Observable<string[]> {
+    // Keep error simulation synchronous so that failures can prevent the games fetch
     if (Math.random() < ERROR_CHANCE_OWNED) {
       throw new Error('Simulated network error for owned games');
     }

@@ -23,22 +23,18 @@ export class CartListItemComponent {
 
   @Input({ required: true }) gameId!: number;
 
-  // Convert games observable to signal for reactive access
-  private readonly games = toSignal(this.gamesService.getGames());
+  // Convert games observable to signal for reactive access and provide an initial empty array
+  private readonly games = toSignal(this.gamesService.getGames(), { initialValue: [] as any[] });
 
   /**
    * Computed game object from gameId
-   * Returns undefined during initial load, throws if game not found after load
+   * Returns undefined during initial load or if the game is not yet available
    */
   readonly game = computed(() => {
     const gamesArray = this.games();
-    if (!gamesArray) {
+    if (!gamesArray || gamesArray.length === 0) {
       return undefined;
     }
-    const foundGame = gamesArray.find((g) => g.id === this.gameId);
-    if (!foundGame) {
-      throw new Error(`Game with id ${this.gameId} not found`);
-    }
-    return foundGame;
+    return gamesArray.find((g) => g.id === this.gameId);
   });
 }

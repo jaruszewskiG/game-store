@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 
   .image {
     width: 100%;
@@ -28,7 +29,8 @@
 
   .details {
     width: 100%;
-    height: 76px;
+    flex: 1;
+    min-height: 76px;
     background-color: $color-white;
     padding: 10.5px 6px 7px 9px;
     display: flex;
@@ -48,13 +50,12 @@
       line-height: 17px;
       text-transform: uppercase;
       @include text-clamp(2);
+      margin-bottom: 4px;
     }
   }
 
   @include respond-to(md) {
     .details {
-      height: auto;
-      min-height: 76px;
       padding: 10px $spacing-md $spacing-md 10px;
 
       &__title {

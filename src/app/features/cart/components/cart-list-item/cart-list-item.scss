@@ -5,7 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 5px $spacing-md 5px 5px;
+  margin: 0; /* items span full width of dropdown; spacing handled by padding */
+  border-top: 1px solid rgba(220, 220, 220, 1);
+  padding: 5px 10px; /* equal 5px space between content and divider lines, 10px horizontal padding */
+  box-sizing: border-box;
 
   .image {
     max-width: 100px;
@@ -19,7 +22,7 @@
   }
 
   .details {
-    margin: 9px;
+    margin: 0 0 0 9px;
     max-width: 190px;
     max-height: 56px;
     display: flex;
@@ -94,7 +97,7 @@
   @include respond-to(sm) {
     flex-direction: column;
     align-items: stretch;
-    margin: 6px $spacing-md;
+    margin: 0;
 
     .image {
       max-width: 100%;
