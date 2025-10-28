@@ -26,7 +26,8 @@
       "@stores/*": ["app/stores/*"],
       "@styles/*": ["styles/*"]
     },
-    "sourceMap": true
+    "sourceMap": true,
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
