@@ -192,8 +192,8 @@ describe('CartStore', () => {
 
   describe('totalPrice computed', () => {
     it('should calculate total price correctly', () => {
-      store.addToCart(1); // 29.99
-      store.addToCart(2); // 39.99
+      store.addToCart(1);
+      store.addToCart(2);
 
       expect(store.totalPrice()).toBe(69.98);
     });
@@ -203,14 +203,14 @@ describe('CartStore', () => {
     });
 
     it('should handle games not found in games list', () => {
-      store.addToCart(999); // Non-existent game
+      store.addToCart(999);
 
       expect(store.totalPrice()).toBe(0);
     });
 
     it('should sum duplicate game prices', () => {
-      store.addToCart(1); // 29.99
-      store.addToCart(1); // 29.99
+      store.addToCart(1);
+      store.addToCart(1);
 
       expect(store.totalPrice()).toBe(59.98);
     });

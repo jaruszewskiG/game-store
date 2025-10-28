@@ -1,11 +1,19 @@
 import type { Config } from 'jest';
 
+/**
+ * Jest Configuration for Angular
+ *
+ * Configures Jest to work with Angular's testing infrastructure.
+ * Includes path aliases matching tsconfig.json for consistent imports.
+ */
 const config: Config = {
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['src/**/*.ts', '!src/**/*.spec.ts', '!src/main.ts', '!src/**/*.d.ts'],
+
+  // Path aliases matching tsconfig.json
   moduleNameMapper: {
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@services/(.*)$': '<rootDir>/src/app/services/$1',
@@ -15,6 +23,8 @@ const config: Config = {
     '^@models/(.*)$': '<rootDir>/src/app/models/$1',
     '^@views/(.*)$': '<rootDir>/src/app/views/$1',
   },
+
+  // TypeScript and Angular template transformation
   transform: {
     '^.+\\.(ts|js|html)$': [
       'jest-preset-angular',
@@ -24,6 +34,8 @@ const config: Config = {
       },
     ],
   },
+
+  // Allow ES modules from node_modules
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
 };
 

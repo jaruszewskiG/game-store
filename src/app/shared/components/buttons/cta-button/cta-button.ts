@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, output } from '@angular/core';
 
+/**
+ * Call-to-action button component
+ * Generic button with customizable label and optional aria-label override
+ */
 @Component({
   selector: 'app-cta-button',
   templateUrl: './cta-button.html',

@@ -3,10 +3,20 @@ import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
+/**
+ * Jest Test Setup for Angular
+ *
+ * Configures the Angular testing environment and mocks browser APIs
+ * not available in the jsdom test environment.
+ */
+
 // Initialize Angular testing environment
 getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
-// Mock window.matchMedia
+/**
+ * Mock window.matchMedia
+ * Required for components using responsive design or media queries
+ */
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
@@ -21,7 +31,10 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-// Mock IntersectionObserver
+/**
+ * Mock IntersectionObserver API
+ * Required for components using lazy loading or scroll-based visibility
+ */
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}
   disconnect() {}
@@ -32,5 +45,9 @@ global.IntersectionObserver = class IntersectionObserver {
   unobserve() {}
 } as any;
 
-// Suppress console.error in tests (errors are intentionally triggered in error handling tests)
+/**
+ * Suppress console.error in tests
+ * Error logging is intentionally triggered in error handling tests
+ * to verify graceful degradation behavior
+ */
 global.console.error = jest.fn();

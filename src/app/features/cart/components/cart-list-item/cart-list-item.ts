@@ -3,6 +3,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { GamesService } from '@services/games.service';
 import { CartStore } from '@stores/cart.store';
 
+/**
+ * Cart item row component
+ *
+ * Displays game details within the cart dropdown.
+ * Converts game ID to full game object using computed signals.
+ *
+ * @throws Error if gameId does not match any loaded game
+ */
 @Component({
   selector: 'app-cart-list-item',
   templateUrl: './cart-list-item.html',
@@ -15,13 +23,15 @@ export class CartListItemComponent {
 
   @Input({ required: true }) gameId!: number;
 
-  // Convert observable to signal at component level
+  // Convert games observable to signal for reactive access
   private readonly games = toSignal(this.gamesService.getGames());
 
-  // Convert to computed signal for better performance
+  /**
+   * Computed game object from gameId
+   * Returns undefined during initial load, throws if game not found after load
+   */
   readonly game = computed(() => {
     const gamesArray = this.games();
-    // Return undefined while games are still loading
     if (!gamesArray) {
       return undefined;
     }
