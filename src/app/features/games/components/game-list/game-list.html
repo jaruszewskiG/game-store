@@ -1,5 +1,5 @@
-<div class="game-list">
+<section class="game-list" role="list" aria-label="Available games">
   @for (game of games(); track game.id) {
-    <app-game-list-item [game]="game"></app-game-list-item>
+    <app-game-list-item [game]="game" role="listitem"></app-game-list-item>
   }
-</div>
+</section>

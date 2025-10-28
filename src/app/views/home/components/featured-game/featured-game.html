@@ -1,9 +1,22 @@
-<div class="featured-game">
-  <h1 class="heading">GAME OF THE WEEK</h1>
-  <div class="featured-game__image-container">
-    <img src="assets/witcher-adventure-game.png" alt="Witcher Adventure Game Cover" />
-    <button class="featured-game__secret-button" (click)="onSecretButtonClick()">
+<section class="featured-game" aria-labelledby="featured-game-heading">
+  <h1 class="heading" id="featured-game-heading">GAME OF THE WEEK</h1>
+  <div
+    class="featured-game__image-container"
+    role="img"
+    aria-label="Witcher Adventure Game - Featured game of the week"
+  >
+    <img
+      src="assets/witcher-adventure-game.png"
+      alt="Witcher Adventure Game cover art"
+      (error)="onImageError($event)"
+    />
+    <button
+      class="featured-game__secret-button"
+      type="button"
+      aria-label="Discover secret feature"
+      (click)="onSecretButtonClick()"
+    >
       A secret button that you should totally implement
     </button>
   </div>
-</div>
+</section>

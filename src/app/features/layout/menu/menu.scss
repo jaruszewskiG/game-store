@@ -19,6 +19,14 @@
   .container {
     @include flex-center;
     height: 100%;
+
+    a {
+      @include focus-visible;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      border-radius: $border-radius-sm;
+    }
   }
 
   .item {

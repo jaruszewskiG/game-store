@@ -1,21 +1,27 @@
-<div class="game-list-item">
+<article class="game-list-item" [attr.aria-label]="getAriaLabel()">
   <div class="image">
-    <img [src]="game.imageUrl" [alt]="game.title" />
+    <img [src]="game.imageUrl" [alt]="game.title + ' cover art'" role="img" />
   </div>
 
   <div class="details">
-    <h3 class="details__title">{{ game.title }}</h3>
+    <h3 class="details__title" [attr.id]="'game-title-' + game.id">
+      {{ game.title }}
+    </h3>
 
-    <div class="details__footer">
+    <div class="details__footer" role="group" [attr.aria-labelledby]="'game-title-' + game.id">
       @if (game.discountPercent) {
-        <app-discount-tag [discountPercent]="game.discountPercent"></app-discount-tag>
+        <app-discount-tag
+          [discountPercent]="game.discountPercent"
+          [attr.aria-label]="game.discountPercent + '% discount'"
+        ></app-discount-tag>
       }
 
       <app-cart-button
         [price]="game.price"
         [status]="getStatus()"
+        [gameTitle]="game.title"
         (clicked)="addToCart()"
       ></app-cart-button>
     </div>
   </div>
-</div>
+</article>

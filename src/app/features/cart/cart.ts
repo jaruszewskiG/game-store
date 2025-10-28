@@ -18,6 +18,15 @@ export class CartComponent {
   onKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.cartStore.isDropdownOpen()) {
       this.cartStore.toggleDropdown();
+      // Return focus to cart button
+      const cartButton = document.querySelector('.cart__button') as HTMLButtonElement;
+      cartButton?.focus();
     }
+  }
+
+  getAriaLabel(): string {
+    const count = this.cartStore.totalGames();
+    const price = this.cartStore.totalPrice();
+    return `Shopping cart with ${count} ${count === 1 ? 'item' : 'items'}, total $${price.toFixed(2)}`;
   }
 }

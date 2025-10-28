@@ -1,1 +1,3 @@
-<div class="discount-tag">-{{ discountPercent }}%</div>
+<div class="discount-tag" role="status" [attr.aria-label]="discountPercent + '% discount'">
+  <span aria-hidden="true">-{{ discountPercent }}%</span>
+</div>

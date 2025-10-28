@@ -1,19 +1,45 @@
 <div class="cart" [class.cart--is-open]="cartStore.isDropdownOpen()">
-  <button class="cart__button" type="button" (click)="cartStore.toggleDropdown()">
-    <img src="assets/cart.svg" alt="Shopping Cart" class="cart__icon" />
-    <span class="cart__games-count">{{ cartStore.totalGames() }}</span>
+  <button
+    class="cart__button"
+    type="button"
+    [attr.aria-label]="getAriaLabel()"
+    [attr.aria-expanded]="cartStore.isDropdownOpen()"
+    aria-controls="cart-dropdown"
+    aria-haspopup="dialog"
+    (click)="cartStore.toggleDropdown()"
+  >
+    <img src="assets/cart.svg" alt="" aria-hidden="true" class="cart__icon" />
+    <span class="cart__games-count" aria-hidden="true">{{ cartStore.totalGames() }}</span>
   </button>
 
-  <div class="cart-dropdown" [attr.aria-hidden]="!cartStore.isDropdownOpen()">
+  <div
+    id="cart-dropdown"
+    class="cart-dropdown"
+    role="dialog"
+    aria-modal="false"
+    aria-label="Shopping cart details"
+    [attr.aria-hidden]="!cartStore.isDropdownOpen()"
+  >
     <div class="cart-dropdown__header">
-      <span class="cart-dropdown__item-count">
+      <span class="cart-dropdown__item-count" role="status" aria-live="polite">
         {{ cartStore.totalGames() }} {{ cartStore.totalGames() === 1 ? 'ITEM' : 'ITEMS' }} IN THE
         CART
       </span>
-      <span class="cart-dropdown__total-price">${{ cartStore.totalPrice() }}</span>
-      <app-cta-button label="CLEAR CART" (clicked)="cartStore.clearCart()"></app-cta-button>
+      <span
+        class="cart-dropdown__total-price"
+        role="status"
+        aria-live="polite"
+        [attr.aria-label]="'Total price $' + cartStore.totalPrice()"
+      >
+        ${{ cartStore.totalPrice() }}
+      </span>
+      <app-cta-button
+        label="CLEAR CART"
+        [ariaLabel]="'Clear all ' + cartStore.totalGames() + ' items from cart'"
+        (clicked)="cartStore.clearCart()"
+      ></app-cta-button>
     </div>
-    <div class="cart-dropdown__list">
+    <div class="cart-dropdown__list" role="list" aria-label="Cart items">
       <app-cart-list></app-cart-list>
     </div>
   </div>

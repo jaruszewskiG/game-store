@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DiscountTagComponent {
-  @Input({ required: true }) discountPercent: number;
+  @Input({ required: true }) discountPercent!: number;
 }

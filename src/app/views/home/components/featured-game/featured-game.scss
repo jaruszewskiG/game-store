@@ -27,6 +27,7 @@
   &__secret-button {
     @include absolute-center;
     @include button-base;
+    @include focus-visible;
     padding: $spacing-3xl $spacing-2xl;
     @include text-semibold;
     line-height: $spacing-2xl;
