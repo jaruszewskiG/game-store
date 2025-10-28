@@ -1,12 +1,24 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Game, GameBase } from '@app/models/game.model';
-import { defer, forkJoin, map, Observable, shareReplay, switchMap, timer } from 'rxjs';
+import {
+  catchError,
+  defer,
+  forkJoin,
+  map,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  timer,
+} from 'rxjs';
 
 const GAMES_URL = 'assets/data/games.json';
 const OWNED_URL = 'assets/data/owned.json';
 const FEATURED_GAME_URL = 'assets/data/featured-game.json';
 const SIMULATED_DELAY_MS = 500; // Simulate backend response time
+const ERROR_CHANCE_GAMES = 0.2; // 20% chance of error when fetching games
+const ERROR_CHANCE_OWNED = 0.05; // 5% chance of error when fetching owned games
 
 @Injectable({
   providedIn: 'root',
@@ -16,16 +28,24 @@ export class GamesService {
 
   private readonly games$ = defer(() =>
     timer(SIMULATED_DELAY_MS).pipe(
-      switchMap(() =>
-        forkJoin([this.getGameBases(), this.getOwnedGameIds()]).pipe(
+      switchMap(() => {
+        // Simulate random error based on probability
+        if (Math.random() < ERROR_CHANCE_GAMES) {
+          throw new Error('Simulated network error for games');
+        }
+        return forkJoin([this.getGameBases(), this.getOwnedGameIds()]).pipe(
           map(([games, ownedGameIds]) => {
             return games.map((game) => ({
               ...game,
               isOwned: ownedGameIds.includes(game.id.toString()),
             }));
           }),
-        ),
-      ),
+        );
+      }),
+      catchError((error) => {
+        console.error('Error loading games:', error);
+        return of([]); // Return empty array on error
+      }),
     ),
   );
 
@@ -38,13 +58,17 @@ export class GamesService {
     return this.games$;
   }
 
-  getFeaturedGame(): Observable<{ id: number; title: string; imageUrl: string }> {
+  getFeaturedGame(): Observable<GameBase | null> {
     return defer(() =>
       timer(SIMULATED_DELAY_MS).pipe(
         switchMap(() =>
-          this.http
-            .get<{ id: number; title: string; imageUrl: string }>(FEATURED_GAME_URL)
-            .pipe(shareReplay(1)),
+          this.http.get<GameBase>(FEATURED_GAME_URL).pipe(
+            catchError((error) => {
+              console.error('Error loading featured game:', error);
+              return of(null); // Return null on error
+            }),
+            shareReplay(1),
+          ),
         ),
       ),
     );
@@ -55,6 +79,10 @@ export class GamesService {
   }
 
   private getOwnedGameIds(): Observable<string[]> {
+    // Simulate random error based on probability
+    if (Math.random() < ERROR_CHANCE_OWNED) {
+      throw new Error('Simulated network error for owned games');
+    }
     return this.http.get<string[]>(OWNED_URL).pipe(shareReplay(1));
   }
 }

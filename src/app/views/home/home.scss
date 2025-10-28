@@ -4,7 +4,7 @@
 .home {
   @include flex-center;
   flex-direction: column;
-  padding: 0 $spacing-2xl 50px $spacing-2xl;
+  padding: $spacing-2xl $spacing-2xl 50px $spacing-2xl;
   box-sizing: border-box;
 
   .featured-game {
@@ -19,7 +19,7 @@
   }
 
   @include respond-to(md) {
-    padding: 0 $spacing-xl 50px $spacing-xl;
+    padding: $spacing-xl $spacing-xl 50px $spacing-xl;
 
     .featured-game {
       margin-bottom: $spacing-xl;
@@ -27,7 +27,7 @@
   }
 
   @include respond-to(sm) {
-    padding: 0 $spacing-sm 50px $spacing-sm;
+    padding: $spacing-sm $spacing-sm 50px $spacing-sm;
 
     .featured-game {
       margin-bottom: $spacing-lg;

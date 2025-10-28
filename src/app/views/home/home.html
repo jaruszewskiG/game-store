@@ -1,7 +1,9 @@
 <div class="home" role="main">
-  <section class="featured-game">
-    <app-featured-game></app-featured-game>
-  </section>
+  @if (featuredGame() !== null) {
+    <section class="featured-game">
+      <app-featured-game></app-featured-game>
+    </section>
+  }
 
   <section aria-labelledby="games-heading">
     <h2 id="games-heading" class="visually-hidden">Available Games</h2>

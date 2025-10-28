@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FeaturedGameComponent } from './components/featured-game/featured-game';
 import { GameListComponent } from '@features/games/components/game-list/game-list';
+import { GamesService } from '@services/games.service';
 
 @Component({
   selector: 'app-home',
@@ -9,4 +11,8 @@ import { GameListComponent } from '@features/games/components/game-list/game-lis
   imports: [FeaturedGameComponent, GameListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {}
+export class HomeComponent {
+  private readonly gamesService = inject(GamesService);
+
+  readonly featuredGame = toSignal(this.gamesService.getFeaturedGame());
+}
