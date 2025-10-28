@@ -6,7 +6,7 @@
       role="presentation"
       [class.app__backdrop--visible]="cartStore.isDropdownOpen()"
       [attr.aria-hidden]="!cartStore.isDropdownOpen()"
-      (click)="cartStore.toggleDropdown()"
+      (click)="cartStore.closeDropdown()"
     ></div>
     <app-home></app-home>
   </main>

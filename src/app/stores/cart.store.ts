@@ -63,6 +63,16 @@ export const CartStore = signalStore(
         }));
         store.cartService.setIds([]);
       },
+      openDropdown() {
+        patchState(store, () => ({
+          isDropdownOpen: true,
+        }));
+      },
+      closeDropdown() {
+        patchState(store, () => ({
+          isDropdownOpen: false,
+        }));
+      },
       toggleDropdown() {
         patchState(store, (state) => ({
           isDropdownOpen: !state.isDropdownOpen,

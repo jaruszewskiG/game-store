@@ -1,5 +1,22 @@
 <section class="game-list" role="list" aria-label="Available games">
-  @for (game of games(); track game.id) {
-    <app-game-list-item [game]="game" role="listitem"></app-game-list-item>
+  @if (games() === undefined || games()!.length === 0) {
+    <!-- Initial loading state: Show skeleton placeholders while data loads -->
+    @for (i of [1, 2, 3, 4, 5]; track i) {
+      <div class="game-list-item game-list-item--skeleton" role="listitem">
+        <div class="image skeleton-shimmer"></div>
+        <div class="details">
+          <div class="details__title skeleton-shimmer"></div>
+          <div class="details__footer">
+            <div class="skeleton-tag skeleton-shimmer"></div>
+            <div class="skeleton-button skeleton-shimmer"></div>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <!-- Data loaded: Show items immediately -->
+    @for (game of games()!; track game.id) {
+      <app-game-list-item [game]="game" role="listitem"></app-game-list-item>
+    }
   }
 </section>

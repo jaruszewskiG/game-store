@@ -102,4 +102,50 @@
       padding: $spacing-lg 10px;
     }
   }
+
+  &__skeleton {
+    width: 100%;
+    height: 360px; // Matches typical featured game banner height
+    background-color: $color-bg-gray;
+    display: block;
+
+    @include respond-to(md) {
+      width: 100%;
+      height: 100%;
+      min-height: 30vh;
+    }
+
+    @include respond-to(sm) {
+      width: 100%;
+      height: 100%;
+      min-height: 22vh;
+    }
+
+    @include respond-to(xs) {
+      width: 100%;
+      height: 100%;
+      min-height: 18vh;
+    }
+  }
+}
+
+// Shimmer animation for skeleton
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-shimmer {
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    $color-bg-gray 0px,
+    rgba(255, 255, 255, 0.3) 40px,
+    $color-bg-gray 80px
+  );
+  background-size: 200px 100%;
 }

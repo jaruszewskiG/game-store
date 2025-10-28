@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Input } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { GamesService } from '@services/games.service';
 import { CartStore } from '@stores/cart.store';
 
@@ -14,9 +15,17 @@ export class CartListItemComponent {
 
   @Input({ required: true }) gameId!: number;
 
+  // Convert observable to signal at component level
+  private readonly games = toSignal(this.gamesService.getGames());
+
   // Convert to computed signal for better performance
   readonly game = computed(() => {
-    const foundGame = this.gamesService.games().find((g) => g.id === this.gameId);
+    const gamesArray = this.games();
+    // Return undefined while games are still loading
+    if (!gamesArray) {
+      return undefined;
+    }
+    const foundGame = gamesArray.find((g) => g.id === this.gameId);
     if (!foundGame) {
       throw new Error(`Game with id ${this.gameId} not found`);
     }
