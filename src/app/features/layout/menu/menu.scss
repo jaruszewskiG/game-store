@@ -3,6 +3,8 @@
 
 .menu {
   @include flex-center;
+  position: relative;
+  z-index: $z-index-dropdown;
   width: 100%;
   height: $menu-height;
   background-color: $color-bg-gray;
