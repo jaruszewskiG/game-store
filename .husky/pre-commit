@@ -1,3 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Ensure staged files are formatted (lint-staged runs prettier --write and git add)
+npx --no-install lint-staged
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
